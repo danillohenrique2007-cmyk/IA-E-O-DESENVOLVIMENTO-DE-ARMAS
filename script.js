@@ -71,7 +71,8 @@ function updateScrollUI() {
 
         }
 
-       progressBar.style.width = `${percentage}%`;
+       progressBar.style.width 
+            = `${percentage}%`;
     }
 
 }
