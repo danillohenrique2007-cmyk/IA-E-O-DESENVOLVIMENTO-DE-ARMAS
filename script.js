@@ -1,198 +1,89 @@
 ```javascript
-const menuButton = document.getElementById("menuButton");
-const mainNav = document.getElementById("mainNav");
-const siteHeader = document.getElementById("siteHeader");
-const progressBar = document.getElementById("progressBar");
+const menuToggle = document.querySelector(".menu-toggle");
+const nav = document.querySelector(".nav");
 
+if (menuToggle && nav) {
+  menuToggle.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
 
-// ==========================================
-// MENU MOBILE
-// ==========================================
+    menuToggle.setAttribute("aria-expanded", String(open));
+  });
 
-if (menuButton && mainNav) {
-    menuButton.addEventListener("click", () => {
-        const isOpen = mainNav.classList.toggle("open");
-
-        menuButton.setAttribute(
-            "aria-expanded",
-            String(isOpen)
-        );
+  nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
     });
-
-    mainNav.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", () => {
-            mainNav.classList.remove("open");
-
-            menuButton.setAttribute(
-                "aria-expanded",
-                "false"
-            );
-        });
-    });
+  });
 }
 
 
 // ==========================================
-// CABEÇALHO + BARRA DE PROGRESSO
+// ANIMAÇÃO DOS ELEMENTOS AO ENTRAR NA TELA
 // ==========================================
 
-function updateScrollUI() {
+const revealElements = document.querySelectorAll(".reveal");
 
-    const scrollTop = window.scrollY;
+const observer = new IntersectionObserver(
+  (entries, obs) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay =
+          `${Math.min(index * 35, 180)}ms`;
 
+        entry.target.classList.add("visible");
 
-    // Efeito do cabeçalho
-
-    if (siteHeader) {
-
-        if (scrollTop > 35) {
-            siteHeader.classList.add("scrolled");
-        } else {
-            siteHeader.classList.remove("scrolled");
-        }
-
-    }
-
-
-    // Barra de progresso
-
-    if (progressBar) {
-
-        const documentHeight =
-            document.documentElement.scrollHeight -
-            window.innerHeight;
-
-        let percentage = 0;
-
-        if (documentHeight > 0) {
-
-            percentage =
-                (scrollTop / documentHeight) * 100;
-
-        }
-
-        progressBar.style.width =
-            `${percentage}%`;
-
-    }
-
-}
-
-
-// Executa quando a página rolar
-
-window.addEventListener(
-    "scroll",
-    updateScrollUI,
-    {
-        passive: true
-    }
+        obs.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.12
+  }
 );
 
-
-// Executa imediatamente ao carregar
-
-updateScrollUI();
+revealElements.forEach(element => {
+  observer.observe(element);
+});
 
 
 // ==========================================
-// ANIMAÇÃO DOS ELEMENTOS
+// EFEITO NO CABEÇALHO DURANTE O SCROLL
 // ==========================================
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+const header = document.querySelector(".header");
+
+window.addEventListener("scroll", () => {
+  if (!header) {
+    return;
+  }
+
+  if (window.scrollY > 30) {
+    header.style.background = "rgba(5, 12, 17, .94)";
+  } else {
+    header.style.background = "rgba(7, 16, 22, .82)";
+  }
+});
 
 
-const revealObserver =
-    new IntersectionObserver(
+// ==========================================
+// ROLAGEM SUAVE ENTRE AS SEÇÕES
+// ==========================================
 
-        (entries, observer) => {
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener("click", event => {
+    const targetId = link.getAttribute("href");
 
-            entries.forEach(
-                (entry, index) => {
+    const target = document.querySelector(targetId);
 
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
+    if (target) {
+      event.preventDefault();
 
-
-                    // Pequeno atraso entre os elementos
-
-                    entry.target.style.transitionDelay =
-                        `${Math.min(index * 45, 220)}ms`;
-
-
-                    // Ativa a animação
-
-                    entry.target.classList.add(
-                        "visible"
-                    );
-
-
-                    // Para de observar depois que apareceu
-
-                    observer.unobserve(
-                        entry.target
-                    );
-
-                }
-            );
-
-        },
-
-        {
-            threshold: 0.10
-        }
-
-    );
-
-
-// Observa todos os elementos .reveal
-
-revealElements.forEach(
-    element => {
-
-        revealObserver.observe(
-            element
-        );
-
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
     }
-);
-
-
-// ==========================================
-// ROLAGEM SUAVE DO MENU
-// ==========================================
-
-document
-    .querySelectorAll('a[href^="#"]')
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            event => {
-
-                const targetId =
-                    link.getAttribute("href");
-
-
-                const target =
-                    document.querySelector(
-                        targetId
-                    );
-
-
-                if (!target) {
-                    return;
-                }
-
-
-                event.preventDefault();
-
-
-                const headerOffset = 70;
-
-
-                const targetPosition =
-                    target.getBoundingClientRect().top +
+  });
+});
 ```
