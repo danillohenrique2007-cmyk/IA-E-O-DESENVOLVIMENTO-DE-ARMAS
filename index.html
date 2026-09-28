@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Apresentação educativa sobre inteligência artificial e desenvolvimento de armas, seus usos militares, riscos, controvérsias e debates internacionais.">
-  <title>IA e o Desenvolvimento de Armas</title>
+  <meta name="description" content="Apresentação educativa sobre inteligência artificial e o desenvolvimento de armas.">
+  <title>IA & Armas | Tecnologia, Guerra e Sociedade</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -12,20 +12,22 @@
 </head>
 <body>
 
-<header class="header">
-  <a class="brand" href="#inicio" aria-label="Voltar ao início">
-    <span class="brand-mark">AI</span>
-    <span>
-      <strong>IA & ARMAS</strong>
-      <small>TECNOLOGIA, GUERRA E SOCIEDADE</small>
+<div class="progress-bar" id="progressBar"></div>
+
+<header class="site-header" id="siteHeader">
+  <a href="#inicio" class="logo">
+    <span class="logo-symbol">AI</span>
+    <span class="logo-text">
+      <b>IA & ARMAS</b>
+      <small>TECNOLOGIA • GUERRA • SOCIEDADE</small>
     </span>
   </a>
 
-  <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+  <button class="menu-button" id="menuButton" aria-label="Abrir menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 
-  <nav class="nav" aria-label="Navegação principal">
+  <nav class="main-nav" id="mainNav">
     <a href="#conceito">Conceito</a>
     <a href="#aplicacoes">Aplicações</a>
     <a href="#paises">Países</a>
@@ -36,365 +38,358 @@
 </header>
 
 <main>
-  <section id="inicio" class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content reveal">
-      <span class="eyebrow">APRESENTAÇÃO • 2026</span>
-      <h1>Inteligência Artificial e o <span>Desenvolvimento de Armas</span></h1>
+
+<section class="hero" id="inicio">
+  <div class="hero-image"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content reveal">
+    <div class="hero-label"><span></span> APRESENTAÇÃO • 2026</div>
+    <h1>Quando a <em>inteligência artificial</em> entra no campo de batalha.</h1>
+    <p>
+      Uma análise sobre o uso de IA em sistemas militares, seus possíveis benefícios,
+      riscos, controvérsias éticas e os debates internacionais sobre controle humano.
+    </p>
+    <div class="hero-buttons">
+      <a href="#conceito" class="button button-main">Explorar o tema <strong>↓</strong></a>
+      <a href="#noticias" class="button button-outline">Notícias recentes</a>
+    </div>
+    <div class="hero-warning">
+      <span>!</span>
+      Conteúdo educativo. Não apresenta instruções para construir ou operar armas.
+    </div>
+  </div>
+
+  <div class="hero-side">
+    <div><strong>01</strong><span>TECNOLOGIA</span></div>
+    <div><strong>02</strong><span>SEGURANÇA</span></div>
+    <div><strong>03</strong><span>ÉTICA</span></div>
+  </div>
+
+  <div class="scroll-hint">ROLE PARA EXPLORAR <span>↓</span></div>
+</section>
+
+
+<section class="intro section" id="conceito">
+  <div class="section-kicker reveal">01 / O CONCEITO</div>
+  <div class="intro-grid">
+    <div class="section-title reveal">
+      <h2>IA militar não é apenas uma arma autônoma.</h2>
+    </div>
+    <div class="intro-text reveal">
       <p>
-        Como a IA está transformando sistemas militares, quais benefícios são buscados,
-        quais riscos surgem e por que governos, especialistas e organizações internacionais
-        discutem limites para essa tecnologia.
+        Inteligência artificial no âmbito militar significa utilizar sistemas capazes de
+        analisar dados, reconhecer padrões, apoiar decisões ou executar determinadas funções
+        com diferentes níveis de autonomia.
       </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#conceito">Começar apresentação</a>
-        <a class="btn btn-secondary" href="#noticias">Ver notícias recentes</a>
-      </div>
-      <div class="hero-note">
-        Conteúdo educativo. O site não apresenta instruções para construir, programar ou operar armas.
-      </div>
-    </div>
-  </section>
-
-  <section id="conceito" class="section">
-    <div class="section-heading reveal">
-      <span class="eyebrow">01 • CONCEITO</span>
-      <h2>O que a IA tem a ver com armas?</h2>
       <p>
-        Inteligência artificial pode ser usada em sistemas militares para analisar grandes
-        volumes de dados, reconhecer padrões, auxiliar decisões, navegar sistemas não tripulados
-        e automatizar determinadas funções. Isso não significa que toda arma com software seja
-        uma arma autônoma.
-      </p>
-    </div>
-
-    <div class="definition-grid">
-      <article class="info-card reveal">
-        <div class="card-number">01</div>
-        <h3>IA militar</h3>
-        <p>
-          É o uso de técnicas de inteligência artificial em atividades de defesa e operações
-          militares, incluindo análise de inteligência, vigilância, logística, planejamento e
-          sistemas de apoio à decisão.
-        </p>
-      </article>
-
-      <article class="info-card reveal">
-        <div class="card-number">02</div>
-        <h3>Sistema autônomo</h3>
-        <p>
-          Um sistema de armas autônomo pode, depois de ativado, selecionar e atingir alvos sem
-          uma nova intervenção humana em cada ação. Essa autonomia é um dos pontos mais
-          controversos do debate.
-        </p>
-      </article>
-
-      <article class="info-card reveal">
-        <div class="card-number">03</div>
-        <h3>Humano no processo</h3>
-        <p>
-          Em outros sistemas, a IA apenas fornece informações ou recomendações e uma pessoa
-          continua responsável pela decisão. A quantidade e a qualidade desse controle humano
-          são centrais nas discussões jurídicas e éticas.
-        </p>
-      </article>
-    </div>
-
-    <div class="quote reveal">
-      <span class="quote-mark">“</span>
-      <p>O desafio não é apenas o que a tecnologia consegue fazer, mas quem permanece responsável quando ela é usada.</p>
-      <small>Questão central do debate sobre autonomia e controle humano</small>
-    </div>
-  </section>
-
-  <section id="aplicacoes" class="section section-dark">
-    <div class="section-heading reveal">
-      <span class="eyebrow">02 • APLICAÇÕES</span>
-      <h2>Onde a IA aparece no setor militar?</h2>
-      <p>
-        O emprego militar da IA é mais amplo do que armas autônomas. Muitas aplicações têm
-        função de apoio, enquanto outras podem estar ligadas diretamente ao uso da força.
+        Uma diferença importante é entre <strong>IA de apoio</strong> e <strong>sistemas de armas
+        autônomos</strong>. Nem todo sistema militar que utiliza IA toma a decisão final sobre o uso da força.
       </p>
     </div>
+  </div>
 
-    <div class="application-grid">
-      <article class="application-card reveal">
-        <div class="icon-box">01</div>
-        <h3>Reconhecimento e análise</h3>
-        <p>Sistemas podem analisar imagens, sensores e grandes conjuntos de dados para identificar padrões ou objetos.</p>
-      </article>
+  <div class="concept-cards">
+    <article class="concept-card reveal">
+      <span class="card-index">01</span>
+      <div class="card-icon">◉</div>
+      <h3>IA de apoio</h3>
+      <p>Analisa grandes volumes de dados e pode auxiliar humanos na interpretação de situações.</p>
+    </article>
+    <article class="concept-card reveal featured-card">
+      <span class="card-index">02</span>
+      <div class="card-icon">◎</div>
+      <h3>Sistemas autônomos</h3>
+      <p>Podem executar determinadas funções com pouca ou nenhuma intervenção humana durante a ação.</p>
+    </article>
+    <article class="concept-card reveal">
+      <span class="card-index">03</span>
+      <div class="card-icon">◇</div>
+      <h3>Controle humano</h3>
+      <p>É o centro do debate: quem decide, supervisiona e responde pelo uso da força?</p>
+    </article>
+  </div>
+</section>
 
-      <article class="application-card reveal">
-        <div class="icon-box">02</div>
-        <h3>Veículos não tripulados</h3>
-        <p>IA pode auxiliar navegação, percepção do ambiente e outras funções de drones e veículos não tripulados.</p>
-      </article>
 
-      <article class="application-card reveal">
-        <div class="icon-box">03</div>
-        <h3>Apoio à decisão</h3>
-        <p>Ferramentas podem organizar informações e apresentar alternativas para ajudar comandantes a interpretar situações.</p>
-      </article>
+<section class="dark-section section" id="aplicacoes">
+  <div class="section-heading reveal">
+    <div class="section-kicker">02 / APLICAÇÕES</div>
+    <h2>Onde a IA aparece<br><span>no setor militar?</span></h2>
+    <p>O uso militar da inteligência artificial é amplo e vai muito além de armas.</p>
+  </div>
 
-      <article class="application-card reveal">
-        <div class="icon-box">04</div>
-        <h3>Logística e manutenção</h3>
-        <p>Previsão de manutenção, organização de recursos e otimização de processos também são aplicações militares.</p>
-      </article>
-
-      <article class="application-card reveal">
-        <div class="icon-box">05</div>
-        <h3>Defesa e detecção</h3>
-        <p>Alguns sistemas usam automação para detectar e responder rapidamente a ameaças, especialmente em defesa aérea.</p>
-      </article>
-
-      <article class="application-card reveal">
-        <div class="icon-box">06</div>
-        <h3>Operações cibernéticas</h3>
-        <p>IA também pode participar da análise de redes e de operações digitais, aumentando a velocidade e a escala das ações.</p>
-      </article>
-    </div>
-  </section>
-
-  <section id="paises" class="section">
-    <div class="section-heading reveal">
-      <span class="eyebrow">03 • CENÁRIO INTERNACIONAL</span>
-      <h2>Quais países estão investindo em IA militar?</h2>
-      <p>
-        Há registros públicos de desenvolvimento, testes ou integração de IA em atividades
-        militares em vários países. Isso não significa que todos utilizem armas totalmente
-        autônomas contra pessoas.
-      </p>
-    </div>
-
-    <div class="country-grid">
-      <article class="country-card reveal"><strong>Estados Unidos</strong><span>IA para inteligência, apoio à decisão, autonomia e sistemas militares.</span></article>
-      <article class="country-card reveal"><strong>China</strong><span>Investimentos em IA, sistemas autônomos e modernização militar.</span></article>
-      <article class="country-card reveal"><strong>Israel</strong><span>Uso e desenvolvimento de ferramentas automatizadas e sistemas de apoio a operações militares.</span></article>
-      <article class="country-card reveal"><strong>Rússia</strong><span>Desenvolvimento de sistemas não tripulados e integração de automação em capacidades militares.</span></article>
-      <article class="country-card reveal"><strong>Ucrânia</strong><span>Uso intensivo de drones, análise de dados e sistemas de IA no contexto da guerra.</span></article>
-      <article class="country-card reveal"><strong>Reino Unido</strong><span>Pesquisa, parcerias e desenvolvimento de capacidades militares baseadas em IA.</span></article>
-      <article class="country-card reveal"><strong>França</strong><span>Integração de IA em aeronaves e programas de defesa de próxima geração.</span></article>
-      <article class="country-card reveal"><strong>Coreia do Sul</strong><span>Desenvolvimento de capacidades autônomas e sistemas militares baseados em tecnologia avançada.</span></article>
-    </div>
-
-    <div class="source-box reveal">
-      <strong>Importante:</strong> a expressão “usar IA para armas” engloba situações muito diferentes.
-      Uma ferramenta pode servir para análise ou navegação sem tomar a decisão final sobre o uso da força.
-    </div>
-  </section>
-
-  <section id="riscos" class="section risk-section">
-    <div class="section-heading reveal">
-      <span class="eyebrow">04 • RISCOS</span>
-      <h2>Quais são os principais riscos?</h2>
-      <p>
-        Os riscos discutidos por organizações internacionais incluem erros, imprevisibilidade,
-        redução do controle humano, dificuldade de responsabilização e impactos sobre civis.
-      </p>
-    </div>
-
-    <div class="risk-layout">
-      <div class="risk-list">
-        <article class="risk-card reveal">
-          <span>R1</span>
-          <div><h3>Erros de identificação</h3><p>Um sistema pode interpretar incorretamente imagens, comportamentos ou informações, especialmente em ambientes complexos.</p></div>
-        </article>
-        <article class="risk-card reveal">
-          <span>R2</span>
-          <div><h3>Imprevisibilidade</h3><p>Modelos complexos podem produzir resultados difíceis de antecipar, principalmente quando encontram situações diferentes dos dados usados no desenvolvimento.</p></div>
-        </article>
-        <article class="risk-card reveal">
-          <span>R3</span>
-          <div><h3>Perda de controle humano</h3><p>Quanto mais decisões forem delegadas a máquinas, maior é a preocupação sobre quando e como uma pessoa pode interromper uma ação.</p></div>
-        </article>
-        <article class="risk-card reveal">
-          <span>R4</span>
-          <div><h3>Responsabilidade</h3><p>Quando um sistema automatizado causa um dano, surge a pergunta: quem deve responder pela decisão e pelo resultado?</p></div>
-        </article>
-        <article class="risk-card reveal">
-          <span>R5</span>
-          <div><h3>Escalada de conflitos</h3><p>Sistemas mais rápidos podem reduzir o tempo disponível para avaliação humana e aumentar o risco de decisões precipitadas.</p></div>
-        </article>
-        <article class="risk-card reveal">
-          <span>R6</span>
-          <div><h3>Proliferação</h3><p>À medida que tecnologias se tornam mais acessíveis, cresce a preocupação com sua disseminação para mais atores e conflitos.</p></div>
-        </article>
-      </div>
-
-      <aside class="risk-panel reveal">
-        <div class="risk-panel-top">PONTO CENTRAL</div>
-        <div class="risk-score">HUMANO</div>
-        <p>
-          O debate internacional gira em torno de uma questão fundamental:
-          decisões sobre o uso da força devem continuar sob controle e julgamento humano significativo?
-        </p>
-        <a href="#polemicas" class="text-link">Entender a polêmica</a>
-      </aside>
-    </div>
-  </section>
-
-  <section id="pros-contras" class="section">
-    <div class="section-heading reveal">
-      <span class="eyebrow">05 • ARGUMENTOS</span>
-      <h2>Possíveis vantagens e desvantagens</h2>
-      <p>Os argumentos abaixo apresentam o debate de forma equilibrada, sem transformar tecnologia militar em recomendação.</p>
-    </div>
-
-    <div class="pros-cons">
-      <div class="argument-column positive reveal">
-        <div class="argument-title">Possíveis benefícios</div>
-        <ul>
-          <li>Análise rápida de grandes volumes de dados.</li>
-          <li>Auxílio na detecção de ameaças e situações de risco.</li>
-          <li>Automação de tarefas repetitivas e logísticas.</li>
-          <li>Possibilidade de reduzir a exposição de militares em determinadas tarefas.</li>
-          <li>Apoio à tomada de decisões em situações com grande quantidade de informações.</li>
-        </ul>
-      </div>
-
-      <div class="argument-column negative reveal">
-        <div class="argument-title">Possíveis problemas</div>
-        <ul>
-          <li>Erros algorítmicos podem ter consequências graves.</li>
-          <li>Decisões automatizadas podem ser difíceis de explicar.</li>
-          <li>Risco de redução da supervisão humana.</li>
-          <li>Possibilidade de corrida tecnológica entre países.</li>
-          <li>Questões éticas, jurídicas e de responsabilização.</li>
-        </ul>
+  <div class="application-layout">
+    <div class="application-feature reveal">
+      <div class="feature-image"></div>
+      <div class="feature-overlay">
+        <span>01</span>
+        <h3>Reconhecimento<br>& análise</h3>
+        <p>Processamento de imagens, sensores e grandes conjuntos de dados.</p>
       </div>
     </div>
-  </section>
 
-  <section id="polemicas" class="section section-dark">
-    <div class="section-heading reveal">
-      <span class="eyebrow">06 • POLÊMICAS</span>
-      <h2>Por que o tema divide opiniões?</h2>
-    </div>
-
-    <div class="timeline">
-      <article class="timeline-item reveal">
-        <span class="timeline-dot"></span>
-        <div>
-          <small>ÉTICA</small>
-          <h3>Uma máquina pode decidir sobre uma vida?</h3>
-          <p>Críticos questionam a delegação de decisões letais a sistemas que não possuem julgamento moral humano.</p>
-        </div>
+    <div class="application-list">
+      <article class="application-item reveal">
+        <span>02</span><div><h3>Veículos não tripulados</h3><p>IA pode auxiliar navegação, percepção e coordenação.</p></div>
       </article>
-
-      <article class="timeline-item reveal">
-        <span class="timeline-dot"></span>
-        <div>
-          <small>DIREITO</small>
-          <h3>Como aplicar as leis da guerra?</h3>
-          <p>O Direito Internacional Humanitário exige avaliações sobre distinção, proporcionalidade e precauções. A autonomia pode dificultar essas avaliações.</p>
-        </div>
+      <article class="application-item reveal">
+        <span>03</span><div><h3>Apoio à decisão</h3><p>Organização de informações para auxiliar comandantes.</p></div>
       </article>
-
-      <article class="timeline-item reveal">
-        <span class="timeline-dot"></span>
-        <div>
-          <small>RESPONSABILIDADE</small>
-          <h3>Quem responde por um erro?</h3>
-          <p>Quanto maior a autonomia, mais complexa pode ficar a atribuição de responsabilidade por decisões e consequências.</p>
-        </div>
+      <article class="application-item reveal">
+        <span>04</span><div><h3>Logística e manutenção</h3><p>Previsão de falhas e organização de recursos.</p></div>
       </article>
-
-      <article class="timeline-item reveal">
-        <span class="timeline-dot"></span>
-        <div>
-          <small>GEOPOLÍTICA</small>
-          <h3>Existe uma corrida por superioridade tecnológica?</h3>
-          <p>Grandes potências e alianças militares estão investindo em IA, drones e sistemas autônomos, aumentando a pressão por novas regras internacionais.</p>
-        </div>
+      <article class="application-item reveal">
+        <span>05</span><div><h3>Defesa e detecção</h3><p>Identificação automatizada de possíveis ameaças.</p></div>
+      </article>
+      <article class="application-item reveal">
+        <span>06</span><div><h3>Ciberoperações</h3><p>Análise de redes e automação de determinadas tarefas digitais.</p></div>
       </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="noticias" class="section news-section">
-    <div class="section-heading reveal">
-      <span class="eyebrow">07 • NOTÍCIAS RECENTES</span>
-      <h2>O que está acontecendo em 2026?</h2>
-      <p>Exemplos recentes mostram que o tema já está presente em testes militares, parcerias internacionais e negociações sobre regras.</p>
+
+<section class="section countries" id="paises">
+  <div class="section-heading centered reveal">
+    <div class="section-kicker">03 / CENÁRIO INTERNACIONAL</div>
+    <h2>Uma transformação <span>global.</span></h2>
+    <p>
+      Diferentes países investem em IA militar, mas os usos, níveis de autonomia e programas
+      públicos variam. Ter IA militar não significa necessariamente possuir armas autônomas.
+    </p>
+  </div>
+
+  <div class="country-grid">
+    <article class="country-card reveal">
+      <div class="country-top"><span>01</span><b>ESTADOS UNIDOS</b></div>
+      <div class="country-image usa"></div>
+      <p>Pesquisa e integração de IA em inteligência, apoio à decisão, sistemas autônomos e defesa.</p>
+    </article>
+    <article class="country-card reveal">
+      <div class="country-top"><span>02</span><b>CHINA</b></div>
+      <div class="country-image china"></div>
+      <p>Investimentos em IA e sistemas autônomos fazem parte da modernização militar chinesa.</p>
+    </article>
+    <article class="country-card reveal">
+      <div class="country-top"><span>03</span><b>ISRAEL</b></div>
+      <div class="country-image israel"></div>
+      <p>Uso de ferramentas automatizadas, análise de dados e sistemas militares avançados.</p>
+    </article>
+    <article class="country-card reveal">
+      <div class="country-top"><span>04</span><b>RÚSSIA</b></div>
+      <div class="country-image russia"></div>
+      <p>Desenvolvimento de sistemas não tripulados e integração de automação em capacidades militares.</p>
+    </article>
+    <article class="country-card reveal">
+      <div class="country-top"><span>05</span><b>UCRÂNIA</b></div>
+      <div class="country-image ukraine"></div>
+      <p>A guerra acelerou o uso de drones, dados de campo e projetos de IA voltados à defesa.</p>
+    </article>
+    <article class="country-card reveal">
+      <div class="country-top"><span>06</span><b>REINO UNIDO</b></div>
+      <div class="country-image uk"></div>
+      <p>Parcerias recentes ampliam pesquisa e desenvolvimento de capacidades militares baseadas em IA.</p>
+    </article>
+    <article class="country-card reveal">
+      <div class="country-top"><span>07</span><b>FRANÇA</b></div>
+      <div class="country-image france"></div>
+      <p>Programas de defesa incorporam IA e a França testa algoritmos em aeronaves militares.</p>
+    </article>
+    <article class="country-card reveal">
+      <div class="country-top"><span>08</span><b>COREIA DO SUL</b></div>
+      <div class="country-image korea"></div>
+      <p>Pesquisa em sistemas autônomos e tecnologias avançadas para defesa.</p>
+    </article>
+  </div>
+
+  <div class="country-note reveal">
+    <strong>Como interpretar esta lista?</strong>
+    <span>São exemplos de países com programas, investimentos ou uso documentado de IA e sistemas autônomos no setor militar. Os níveis de autonomia e as finalidades não são iguais.</span>
+  </div>
+</section>
+
+
+<section class="risk-section section" id="riscos">
+  <div class="section-heading centered reveal">
+    <div class="section-kicker">04 / RISCOS</div>
+    <h2>Quanto maior a autonomia,<br><span>maior o desafio do controle.</span></h2>
+    <p>O debate envolve segurança, previsibilidade, responsabilidade e proteção de civis.</p>
+  </div>
+
+  <div class="risk-grid">
+    <article class="risk-card reveal">
+      <div class="risk-number">01</div><h3>Erros de identificação</h3>
+      <p>Um sistema pode interpretar incorretamente imagens, comportamentos ou informações em ambientes complexos.</p>
+    </article>
+    <article class="risk-card reveal">
+      <div class="risk-number">02</div><h3>Imprevisibilidade</h3>
+      <p>Modelos podem produzir resultados difíceis de antecipar quando encontram situações diferentes dos dados de desenvolvimento.</p>
+    </article>
+    <article class="risk-card reveal">
+      <div class="risk-number">03</div><h3>Perda de controle</h3>
+      <p>Delegar decisões demais a máquinas pode reduzir a capacidade humana de supervisionar e interromper ações.</p>
+    </article>
+    <article class="risk-card reveal">
+      <div class="risk-number">04</div><h3>Responsabilidade</h3>
+      <p>Um erro automatizado levanta dúvidas sobre quem deve responder pela decisão e pelas consequências.</p>
+    </article>
+    <article class="risk-card reveal">
+      <div class="risk-number">05</div><h3>Escalada</h3>
+      <p>Sistemas muito rápidos podem diminuir o tempo disponível para análise humana e aumentar riscos em uma crise.</p>
+    </article>
+    <article class="risk-card reveal">
+      <div class="risk-number">06</div><h3>Proliferação</h3>
+      <p>Quanto mais acessíveis essas tecnologias ficam, maior a preocupação com sua disseminação e uso por diferentes atores.</p>
+    </article>
+  </div>
+
+  <div class="central-question reveal">
+    <span>QUESTÃO CENTRAL</span>
+    <h3>Quem continua responsável quando uma máquina participa de uma decisão sobre o uso da força?</h3>
+  </div>
+</section>
+
+
+<section class="section comparison">
+  <div class="section-heading reveal">
+    <div class="section-kicker">05 / DEBATE</div>
+    <h2>Possíveis benefícios<br><span>e possíveis problemas.</span></h2>
+  </div>
+
+  <div class="compare-grid">
+    <div class="compare-column benefit reveal">
+      <div class="compare-header"><span>+</span><h3>Possíveis benefícios</h3></div>
+      <ul>
+        <li>Análise rápida de grandes volumes de dados.</li>
+        <li>Auxílio na detecção de situações de risco.</li>
+        <li>Automação de tarefas repetitivas e logísticas.</li>
+        <li>Redução da exposição humana em determinadas funções.</li>
+        <li>Apoio a decisões em situações com muitas informações.</li>
+      </ul>
     </div>
-
-    <div class="news-grid">
-      <article class="news-card reveal">
-        <div class="news-image news-image-1"></div>
-        <div class="news-content">
-          <span>22 SET 2026</span>
-          <h3>França testa algoritmos de IA no Rafale</h3>
-          <p>A Dassault Aviation informou que testou dois algoritmos de IA em voo no caça Rafale. A empresa afirmou que os sistemas foram desenvolvidos para auxiliar as tripulações.</p>
-          <a href="https://www.reuters.com/business/aerospace-defense/dassault-aviation-tests-ai-algorithms-rafale-fighter-jet-2026-09-22/" target="_blank" rel="noopener">Ler fonte</a>
-        </div>
-      </article>
-
-      <article class="news-card reveal">
-        <div class="news-image news-image-2"></div>
-        <div class="news-content">
-          <span>25 AGO 2026</span>
-          <h3>ONU e CICV pedem novas regras</h3>
-          <p>O secretário-geral da ONU e a presidência do CICV renovaram o apelo por regras internacionais sobre sistemas de armas autônomos e defenderam limites claros para o uso da força.</p>
-          <a href="https://www.ungeneva.org/en/news-media/press-release/2026/08/renewed-call-from-united-nations-secretary-general-and-president" target="_blank" rel="noopener">Ler fonte</a>
-        </div>
-      </article>
-
-      <article class="news-card reveal">
-        <div class="news-image news-image-3"></div>
-        <div class="news-content">
-          <span>24 AGO 2026</span>
-          <h3>Reino Unido e Ucrânia ampliam parceria</h3>
-          <p>Os dois países anunciaram uma parceria para ampliar o desenvolvimento de capacidades militares baseadas em IA e o acesso britânico aos Avengers AI Labs da Ucrânia.</p>
-          <a href="https://www.gov.uk/government/news/new-partnership-set-to-see-the-uk-and-ukraine-develop-battle-winning-technology-as-britain-secures-access-to-ukraines-avengers-ai-labs" target="_blank" rel="noopener">Ler fonte</a>
-        </div>
-      </article>
+    <div class="compare-column danger reveal">
+      <div class="compare-header"><span>−</span><h3>Possíveis problemas</h3></div>
+      <ul>
+        <li>Erros algorítmicos podem gerar consequências graves.</li>
+        <li>Decisões automatizadas podem ser difíceis de explicar.</li>
+        <li>Risco de redução da supervisão humana.</li>
+        <li>Corrida tecnológica entre países.</li>
+        <li>Questões éticas, jurídicas e de responsabilização.</li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="debate" class="section debate">
-    <div class="debate-box reveal">
-      <span class="eyebrow">08 • PARA DISCUTIR EM SALA</span>
-      <h2>A tecnologia deve ter limites?</h2>
-      <p>
-        A pergunta final da apresentação não precisa ter uma resposta simples.
-        O ponto é discutir como inovação, segurança, responsabilidade, direitos humanos
-        e regras internacionais podem coexistir quando sistemas de IA são usados em conflitos.
-      </p>
-      <div class="question-grid">
-        <div>Quem deve manter o controle?</div>
-        <div>Quais usos deveriam ter limites?</div>
-        <div>Como responsabilizar decisões automatizadas?</div>
-        <div>As regras internacionais acompanham a tecnologia?</div>
+
+<section class="dark-section section controversies" id="polemicas">
+  <div class="section-heading reveal">
+    <div class="section-kicker">06 / POLÊMICAS</div>
+    <h2>As perguntas que<br><span>a tecnologia deixou.</span></h2>
+  </div>
+
+  <div class="controversy-list">
+    <article class="controversy reveal">
+      <span>01</span><div><small>ÉTICA</small><h3>Uma máquina deve decidir sobre uma vida?</h3><p>Críticos questionam a delegação de decisões letais a sistemas sem julgamento moral humano.</p></div>
+    </article>
+    <article class="controversy reveal">
+      <span>02</span><div><small>DIREITO</small><h3>Como aplicar as leis da guerra?</h3><p>O Direito Internacional Humanitário exige avaliações de distinção, proporcionalidade e precauções.</p></div>
+    </article>
+    <article class="controversy reveal">
+      <span>03</span><div><small>RESPONSABILIDADE</small><h3>Quem responde por um erro?</h3><p>Quanto maior a autonomia, mais complexa pode ficar a atribuição de responsabilidade.</p></div>
+    </article>
+    <article class="controversy reveal">
+      <span>04</span><div><small>GEOPOLÍTICA</small><h3>Existe uma corrida tecnológica?</h3><p>Investimentos em IA, drones e autonomia aumentam a pressão por novas regras internacionais.</p></div>
+    </article>
+  </div>
+</section>
+
+
+<section class="section news" id="noticias">
+  <div class="section-heading centered reveal">
+    <div class="section-kicker">07 / NOTÍCIAS</div>
+    <h2>O tema está acontecendo <span>agora.</span></h2>
+    <p>Exemplos recentes de desenvolvimento tecnológico e debate internacional em 2026.</p>
+  </div>
+
+  <div class="news-grid">
+    <article class="news-card reveal">
+      <div class="news-photo rafale"></div>
+      <div class="news-body">
+        <div class="news-meta"><span>22 SET 2026</span><b>FRANÇA</b></div>
+        <h3>Dassault testa algoritmos de IA no Rafale</h3>
+        <p>A empresa informou que testou dois algoritmos de IA em voo e afirmou que eles foram desenvolvidos para auxiliar as tripulações.</p>
+        <a href="https://www.reuters.com/business/aerospace-defense/dassault-aviation-tests-ai-algorithms-rafale-fighter-jet-2026-09-22/" target="_blank" rel="noopener">Ler na Reuters ↗</a>
       </div>
-    </div>
-  </section>
+    </article>
 
-  <section id="fontes" class="section sources">
-    <div class="section-heading reveal">
-      <span class="eyebrow">FONTES</span>
-      <h2>Para aprofundar</h2>
+    <article class="news-card reveal">
+      <div class="news-photo un"></div>
+      <div class="news-body">
+        <div class="news-meta"><span>25 AGO 2026</span><b>ONU / CICV</b></div>
+        <h3>ONU e CICV renovam apelo por regras</h3>
+        <p>As organizações pediram regras internacionais para sistemas de armas autônomos e defenderam limites para o uso da força.</p>
+        <a href="https://www.ungeneva.org/en/news-media/press-release/2026/08/renewed-call-from-united-nations-secretary-general-and-president" target="_blank" rel="noopener">Ler na ONU ↗</a>
+      </div>
+    </article>
+
+    <article class="news-card reveal">
+      <div class="news-photo ukraine-news"></div>
+      <div class="news-body">
+        <div class="news-meta"><span>25 SET 2026</span><b>REINO UNIDO / UCRÂNIA</b></div>
+        <h3>Parceria amplia pesquisa sobre drones com IA</h3>
+        <p>O governo britânico anunciou acesso a dados dos Avengers AI Labs para uma competição voltada a modelos de drones autônomos.</p>
+        <a href="https://www.gov.uk/government/news/british-companies-to-access-prized-ukraine-data-to-develop-ai-drone-swarms" target="_blank" rel="noopener">Ler no GOV.UK ↗</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+<section class="team-section section" id="equipe">
+  <div class="team-box reveal">
+    <div class="section-kicker">08 / APRESENTAÇÃO</div>
+    <h2>Dividam o tema entre<br><span>os três integrantes.</span></h2>
+
+    <div class="team-grid">
+      <div class="team-card"><span>01</span><h3>Integrante 1</h3><p>Conceito, IA militar e aplicações.</p></div>
+      <div class="team-card"><span>02</span><h3>Integrante 2</h3><p>Países, benefícios e riscos.</p></div>
+      <div class="team-card"><span>03</span><h3>Integrante 3</h3><p>Polêmicas, notícias e conclusão.</p></div>
     </div>
-    <div class="source-links reveal">
-      <a href="https://www.icrc.org/pt/artigo/perguntas-frequentes-inteligencia-artificial-no-ambito-militar" target="_blank" rel="noopener">CICV — IA no âmbito militar</a>
-      <a href="https://www.ungeneva.org/en/news-media/press-release/2026/08/renewed-call-from-united-nations-secretary-general-and-president" target="_blank" rel="noopener">ONU Genebra — Regras para armas autônomas</a>
-      <a href="https://digitallibrary.un.org/record/4095956" target="_blank" rel="noopener">ONU — IA no domínio militar</a>
-      <a href="https://www.nato.int/en/what-we-do/deterrence-and-defence/emerging-and-disruptive-technologies" target="_blank" rel="noopener">OTAN — Tecnologias emergentes</a>
-      <a href="https://www.gov.uk/government/news/new-partnership-set-to-see-the-uk-and-ukraine-develop-battle-winning-technology-as-britain-secures-access-to-ukraines-avengers-ai-labs" target="_blank" rel="noopener">GOV.UK — Parceria Reino Unido/Ucrânia</a>
-    </div>
-  </section>
+  </div>
+</section>
+
+
+<section class="final-section" id="conclusao">
+  <div class="final-content reveal">
+    <div class="section-kicker">09 / CONCLUSÃO</div>
+    <h2>A tecnologia pode avançar.<br><span>Mas quem deve controlá-la?</span></h2>
+    <p>
+      O desafio não é apenas perguntar o que a inteligência artificial consegue fazer.
+      É discutir quais limites devem existir, como preservar a responsabilidade humana
+      e como proteger pessoas em situações de conflito.
+    </p>
+    <a href="#inicio" class="button button-main">Voltar ao início ↑</a>
+  </div>
+</section>
+
+<section class="sources-section section" id="fontes">
+  <div class="section-heading centered reveal">
+    <div class="section-kicker">FONTES</div>
+    <h2>Para aprofundar.</h2>
+  </div>
+  <div class="source-grid reveal">
+    <a href="https://www.icrc.org/pt/artigo/perguntas-frequentes-inteligencia-artificial-no-ambito-militar" target="_blank" rel="noopener">CICV — IA no âmbito militar ↗</a>
+    <a href="https://www.ungeneva.org/en/news-media/press-release/2026/08/renewed-call-from-united-nations-secretary-general-and-president" target="_blank" rel="noopener">ONU Genebra — Armas autônomas ↗</a>
+    <a href="https://www.gov.uk/government/news/new-partnership-set-to-see-the-uk-and-ukraine-develop-battle-winning-technology-as-britain-secures-access-to-ukraines-avengers-ai-labs" target="_blank" rel="noopener">GOV.UK — Parceria Reino Unido/Ucrânia ↗</a>
+    <a href="https://www.nato.int/en/what-we-do/deterrence-and-defence/emerging-and-disruptive-technologies" target="_blank" rel="noopener">OTAN — Tecnologias emergentes ↗</a>
+  </div>
+</section>
+
 </main>
 
 <footer class="footer">
-  <div>
-    <strong>IA & ARMAS</strong>
-    <p>Apresentação acadêmica sobre tecnologia, segurança, ética e sociedade.</p>
-  </div>
-  <div class="footer-team">
-    <span>Integrante 01</span>
-    <span>Integrante 02</span>
-    <span>Integrante 03</span>
-  </div>
-  <small>Projeto desenvolvido somente com HTML, CSS e JavaScript.</small>
+  <div class="footer-brand"><span class="logo-symbol">AI</span><strong>IA & ARMAS</strong></div>
+  <p>Projeto acadêmico • Desenvolvido com HTML, CSS e JavaScript.</p>
 </footer>
 
 <script src="script.js"></script>
