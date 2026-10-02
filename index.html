@@ -1,640 +1,2214 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IA e o Desenvolvimento de Armas | Apresentação Estratégica</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts Inter & JetBrains Mono -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        dark: {
-                            900: '#0B0F19',
-                            800: '#111827',
-                            700: '#1F2937',
-                            600: '#374151'
-                        }
-                    }
-                }
-            }
+
+```
+<title>IA e o Desenvolvimento de Armas | Apresentação</title>
+
+<meta name="description" content="Apresentação acadêmica sobre inteligência artificial e seu uso indevido em atividades militares.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+    :root {
+        --bg: #070a0f;
+        --bg-soft: #0d1118;
+        --bg-card: #111722;
+        --border: rgba(255,255,255,.09);
+        --text: #f4f7fb;
+        --muted: #9aa6b5;
+        --blue: #38bdf8;
+        --cyan: #22d3ee;
+        --red: #ef4444;
+        --orange: #f97316;
+        --green: #34d399;
+        --purple: #a78bfa;
+        --yellow: #facc15;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    body::selection {
+        background: var(--cyan);
+        color: #000;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+    }
+
+    button {
+        font-family: inherit;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #05070b;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #263241;
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #3b4b5e;
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 74px;
+        z-index: 1000;
+        background: rgba(7,10,15,.82);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+        width: min(1180px, calc(100% - 36px));
+        height: 100%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .brand-icon {
+        width: 40px;
+        height: 40px;
+        display: grid;
+        place-items: center;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #2563eb, #ef4444);
+        box-shadow: 0 0 30px rgba(59,130,246,.2);
+    }
+
+    .brand-text strong {
+        display: block;
+        font-size: 15px;
+        letter-spacing: .12em;
+    }
+
+    .brand-text span {
+        display: block;
+        color: #7f8b99;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9px;
+        letter-spacing: .13em;
+        text-transform: uppercase;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .nav-links a {
+        color: #aeb8c5;
+        font-size: 12px;
+        font-weight: 500;
+        transition: .25s ease;
+    }
+
+    .nav-links a:hover {
+        color: white;
+    }
+
+    .menu-button {
+        display: none;
+        border: 0;
+        background: transparent;
+        color: white;
+        font-size: 23px;
+        cursor: pointer;
+    }
+
+    /* =========================
+       GENERAL
+    ========================= */
+
+    .container {
+        width: min(1180px, calc(100% - 36px));
+        margin: auto;
+    }
+
+    .section {
+        position: relative;
+        padding: 110px 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .section-dark {
+        background: var(--bg);
+    }
+
+    .section-soft {
+        background: var(--bg-soft);
+    }
+
+    .section-header {
+        max-width: 760px;
+        margin-bottom: 50px;
+    }
+
+    .section-header.center {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+        color: var(--cyan);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+        content: "";
+        width: 22px;
+        height: 1px;
+        background: currentColor;
+    }
+
+    h2 {
+        font-size: clamp(32px, 5vw, 54px);
+        line-height: 1.05;
+        letter-spacing: -.04em;
+        margin-bottom: 16px;
+    }
+
+    .section-description {
+        color: var(--muted);
+        font-size: 16px;
+        max-width: 680px;
+    }
+
+    .center .section-description {
+        margin: auto;
+    }
+
+    .accent {
+        background: linear-gradient(90deg, #38bdf8, #818cf8, #f43f5e);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+        min-height: 100vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        padding-top: 74px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .hero-background {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(90deg, rgba(7,10,15,.96) 0%, rgba(7,10,15,.76) 42%, rgba(7,10,15,.34) 100%),
+            linear-gradient(0deg, rgba(7,10,15,.9), transparent 50%),
+            url("https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=85")
+            center/cover;
+        filter: saturate(.8);
+    }
+
+    .hero-grid {
+        position: absolute;
+        inset: 0;
+        opacity: .13;
+        background-image:
+            linear-gradient(rgba(56,189,248,.35) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(56,189,248,.35) 1px, transparent 1px);
+        background-size: 70px 70px;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 850px;
+        padding: 100px 0;
+    }
+
+    .hero-label {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        padding: 8px 13px;
+        margin-bottom: 24px;
+        border: 1px solid rgba(56,189,248,.25);
+        border-radius: 999px;
+        background: rgba(8,47,73,.35);
+        color: #7dd3fc;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+    }
+
+    .hero-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #22d3ee;
+        box-shadow: 0 0 14px #22d3ee;
+    }
+
+    .hero h1 {
+        max-width: 900px;
+        font-size: clamp(45px, 7vw, 88px);
+        line-height: .98;
+        letter-spacing: -.055em;
+        margin-bottom: 24px;
+    }
+
+    .hero-subtitle {
+        max-width: 650px;
+        color: #c2cad4;
+        font-size: clamp(16px, 2vw, 20px);
+        margin-bottom: 34px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 0 20px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        font-size: 13px;
+        font-weight: 600;
+        transition: .25s ease;
+    }
+
+    .button-primary {
+        background: white;
+        color: #070a0f;
+    }
+
+    .button-primary:hover {
+        background: #dff8ff;
+        transform: translateY(-2px);
+    }
+
+    .button-secondary {
+        background: rgba(17,24,39,.72);
+        color: white;
+    }
+
+    .button-secondary:hover {
+        border-color: rgba(56,189,248,.5);
+        transform: translateY(-2px);
+    }
+
+    .hero-stats {
+        position: absolute;
+        right: 0;
+        bottom: 70px;
+        display: flex;
+        gap: 10px;
+        z-index: 3;
+    }
+
+    .hero-stat {
+        min-width: 115px;
+        padding: 13px 15px;
+        border: 1px solid rgba(255,255,255,.1);
+        background: rgba(7,10,15,.72);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+    }
+
+    .hero-stat strong {
+        display: block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 21px;
+        color: white;
+    }
+
+    .hero-stat span {
+        color: #7f8b99;
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+    }
+
+    /* =========================
+       VISUAL IMAGE
+    ========================= */
+
+    .visual {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: #0c1119;
+    }
+
+    .visual img {
+        height: 100%;
+        object-fit: cover;
+        transition: transform .7s ease;
+    }
+
+    .visual:hover img {
+        transform: scale(1.035);
+    }
+
+    .visual-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(0deg, rgba(0,0,0,.78), transparent 60%);
+    }
+
+    .visual-caption {
+        position: absolute;
+        left: 24px;
+        right: 24px;
+        bottom: 22px;
+        z-index: 2;
+    }
+
+    .visual-caption span {
+        color: #9ca9b7;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: .12em;
+    }
+
+    .visual-caption h3 {
+        margin-top: 4px;
+        font-size: 20px;
+    }
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    .intro-grid {
+        display: grid;
+        grid-template-columns: 1.1fr .9fr;
+        gap: 30px;
+        align-items: stretch;
+    }
+
+    .intro-main {
+        min-height: 470px;
+    }
+
+    .intro-side {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .info-card {
+        padding: 28px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: var(--bg-card);
+    }
+
+    .info-card .icon {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 18px;
+        border-radius: 11px;
+        background: rgba(56,189,248,.1);
+        color: var(--cyan);
+    }
+
+    .info-card h3 {
+        font-size: 20px;
+        margin-bottom: 8px;
+    }
+
+    .info-card p {
+        color: var(--muted);
+        font-size: 14px;
+    }
+
+    /* =========================
+       REPORT
+    ========================= */
+
+    .report-layout {
+        display: grid;
+        grid-template-columns: .8fr 1.2fr;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .report-number {
+        font-family: "JetBrains Mono", monospace;
+        font-size: clamp(90px, 13vw, 170px);
+        line-height: .8;
+        color: rgba(56,189,248,.12);
+        font-weight: 700;
+    }
+
+    .report-content h3 {
+        font-size: 30px;
+        margin-bottom: 12px;
+    }
+
+    .report-content p {
+        color: var(--muted);
+        max-width: 650px;
+        margin-bottom: 24px;
+    }
+
+    .split-stat {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .stat-box {
+        padding: 22px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--bg-card);
+    }
+
+    .stat-box strong {
+        display: block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 32px;
+    }
+
+    .stat-box span {
+        color: var(--muted);
+        font-size: 12px;
+    }
+
+    /* =========================
+       CASES
+    ========================= */
+
+    .cases {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .case-card {
+        position: relative;
+        min-height: 520px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: #0c1118;
+    }
+
+    .case-card img {
+        position: absolute;
+        inset: 0;
+        height: 100%;
+        object-fit: cover;
+        transition: transform .8s ease;
+    }
+
+    .case-card:hover img {
+        transform: scale(1.045);
+    }
+
+    .case-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(0deg, rgba(4,6,10,.98) 0%, rgba(4,6,10,.68) 45%, rgba(4,6,10,.12) 100%);
+    }
+
+    .case-content {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 2;
+        padding: 30px;
+    }
+
+    .case-number {
+        display: inline-block;
+        margin-bottom: 10px;
+        color: var(--cyan);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: .14em;
+    }
+
+    .case-content h3 {
+        max-width: 600px;
+        font-size: clamp(25px, 3vw, 36px);
+        line-height: 1.05;
+        margin-bottom: 10px;
+    }
+
+    .case-content p {
+        max-width: 650px;
+        color: #b4beca;
+        font-size: 13px;
+    }
+
+    .case-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 16px;
+    }
+
+    .case-tag {
+        padding: 5px 8px;
+        border-radius: 5px;
+        border: 1px solid rgba(255,255,255,.12);
+        background: rgba(255,255,255,.06);
+        color: #cbd5e1;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9px;
+    }
+
+    /* =========================
+       CASE 3 / 4 / 5 / 6 DETAILS
+    ========================= */
+
+    .detail-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        align-items: stretch;
+    }
+
+    .detail-image {
+        min-height: 480px;
+    }
+
+    .detail-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .detail-content h3 {
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.02;
+        margin-bottom: 15px;
+    }
+
+    .detail-content > p {
+        color: var(--muted);
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+
+    .process {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+    }
+
+    .process-step {
+        position: relative;
+        padding: 10px 13px;
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+        border-radius: 8px;
+        color: #d4dce5;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9px;
+        text-transform: uppercase;
+    }
+
+    .big-data {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        margin: 22px 0;
+    }
+
+    .big-data strong {
+        font-family: "JetBrains Mono", monospace;
+        font-size: clamp(45px, 7vw, 78px);
+        line-height: 1;
+    }
+
+    .big-data span {
+        color: var(--muted);
+        font-size: 13px;
+        max-width: 180px;
+    }
+
+    /* =========================
+       CASE 5 CHAIN
+    ========================= */
+
+    .chain {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0;
+        margin-top: 28px;
+    }
+
+    .chain-item {
+        position: relative;
+        padding: 22px 15px;
+        text-align: center;
+        border: 1px solid var(--border);
+        background: var(--bg-card);
+    }
+
+    .chain-item:not(:last-child)::after {
+        content: "\f061";
+        position: absolute;
+        right: -9px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #1c2633;
+        color: var(--cyan);
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 8px;
+        z-index: 3;
+    }
+
+    .chain-item i {
+        display: block;
+        color: var(--cyan);
+        margin-bottom: 8px;
+        font-size: 20px;
+    }
+
+    .chain-item span {
+        color: #bdc7d2;
+        font-size: 11px;
+    }
+
+    /* =========================
+       PATTERNS
+    ========================= */
+
+    .pattern-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        margin-top: 35px;
+    }
+
+    .pattern {
+        min-height: 180px;
+        padding: 22px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--bg-card);
+    }
+
+    .pattern-number {
+        color: var(--cyan);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+    }
+
+    .pattern h3 {
+        margin: 24px 0 8px;
+        font-size: 16px;
+    }
+
+    .pattern p {
+        color: var(--muted);
+        font-size: 11px;
+    }
+
+    /* =========================
+       SIX CASES
+    ========================= */
+
+    .six-cases {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+
+    .mini-case {
+        position: relative;
+        height: 230px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        border-radius: 13px;
+    }
+
+    .mini-case img {
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(.75);
+        transition: .5s ease;
+    }
+
+    .mini-case:hover img {
+        transform: scale(1.06);
+        filter: saturate(1);
+    }
+
+    .mini-case::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(0deg, rgba(3,5,8,.95), transparent 70%);
+    }
+
+    .mini-case-content {
+        position: absolute;
+        bottom: 15px;
+        left: 17px;
+        right: 17px;
+        z-index: 2;
+    }
+
+    .mini-case-content span {
+        color: var(--cyan);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9px;
+    }
+
+    .mini-case-content h3 {
+        font-size: 16px;
+        margin-top: 3px;
+    }
+
+    /* =========================
+       CONCLUSION
+    ========================= */
+
+    .conclusion {
+        min-height: 620px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .conclusion-background {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(90deg, rgba(7,10,15,.97), rgba(7,10,15,.82), rgba(7,10,15,.45)),
+            url("https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=2000&q=85")
+            center/cover;
+    }
+
+    .conclusion-content {
+        position: relative;
+        z-index: 2;
+        max-width: 780px;
+    }
+
+    .conclusion-content h2 {
+        font-size: clamp(38px, 6vw, 70px);
+    }
+
+    .conclusion-content p {
+        color: #b7c1cc;
+        font-size: 17px;
+        max-width: 650px;
+        margin-bottom: 30px;
+    }
+
+    .learning-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        max-width: 650px;
+    }
+
+    .learning {
+        padding: 14px 16px;
+        border: 1px solid rgba(255,255,255,.1);
+        border-radius: 9px;
+        background: rgba(255,255,255,.04);
+        color: #d6dde5;
+        font-size: 12px;
+    }
+
+    .learning i {
+        color: var(--cyan);
+        margin-right: 8px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+        padding: 45px 0;
+        background: #05070b;
+        border-top: 1px solid var(--border);
+    }
+
+    .footer-content {
+        text-align: center;
+    }
+
+    .footer-logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-bottom: 12px;
+        font-weight: 700;
+        letter-spacing: .12em;
+    }
+
+    .footer-logo i {
+        color: var(--cyan);
+    }
+
+    footer p {
+        color: #6f7b88;
+        font-size: 11px;
+    }
+
+    /* =========================
+       SCROLL REVEAL
+    ========================= */
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(25px);
+        transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 950px) {
+
+        .nav-links {
+            position: absolute;
+            top: 74px;
+            left: 0;
+            right: 0;
+            display: none;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0;
+            padding: 12px 18px 18px;
+            background: rgba(7,10,15,.97);
+            border-bottom: 1px solid var(--border);
         }
-    </script>
-    <style>
-        ::-webkit-scrollbar {
-            width: 8px;
+
+        .nav-links.active {
+            display: flex;
         }
-        ::-webkit-scrollbar-track {
-            background: #0B0F19;
+
+        .nav-links a {
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(255,255,255,.05);
         }
-        ::-webkit-scrollbar-thumb {
-            background: #374151;
-            border-radius: 4px;
+
+        .menu-button {
+            display: block;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #4B5563;
+
+        .hero-stats {
+            position: relative;
+            right: auto;
+            bottom: auto;
+            margin-top: 50px;
+            flex-wrap: wrap;
         }
-        .card-hover {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        .intro-grid,
+        .report-layout,
+        .detail-layout {
+            grid-template-columns: 1fr;
         }
-        .card-hover:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+
+        .intro-side {
+            grid-template-rows: auto;
         }
-    </style>
+
+        .pattern-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 700px) {
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .hero {
+            min-height: auto;
+        }
+
+        .hero-content {
+            padding: 80px 0 50px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+        }
+
+        .hero-buttons {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .button {
+            width: 100%;
+        }
+
+        .cases {
+            grid-template-columns: 1fr;
+        }
+
+        .case-card {
+            min-height: 460px;
+        }
+
+        .six-cases {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .mini-case {
+            height: 190px;
+        }
+
+        .chain {
+            grid-template-columns: 1fr;
+            gap: 8px;
+        }
+
+        .chain-item:not(:last-child)::after {
+            right: 50%;
+            top: auto;
+            bottom: -13px;
+            transform: translateX(50%) rotate(90deg);
+        }
+
+        .learning-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .split-stat {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+
+        .container,
+        .nav-container {
+            width: min(100% - 26px, 1180px);
+        }
+
+        .brand-text span {
+            display: none;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+        }
+
+        .six-cases {
+            grid-template-columns: 1fr;
+        }
+
+        .pattern-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-stat {
+            flex: 1;
+            min-width: 100px;
+        }
+    }
+</style>
+```
+
 </head>
-<body class="bg-dark-900 text-gray-100 font-sans antialiased selection:bg-red-500 selection:text-white">
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-900/90 backdrop-blur-md border-b border-gray-800 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-red-600 to-blue-600 flex items-center justify-center shadow-lg shadow-red-500/20">
-                    <i class="fa-solid fa-shield-halved text-white text-lg"></i>
+<body>
+
+```
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<header class="navbar">
+    <div class="nav-container">
+
+        <a href="#inicio" class="brand">
+            <div class="brand-icon">
+                <i class="fa-solid fa-microchip"></i>
+            </div>
+
+            <div class="brand-text">
+                <strong>DEFENCE.AI</strong>
+                <span>Estudo acadêmico</span>
+            </div>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#relatorio">Relatório</a>
+            <a href="#casos">Casos</a>
+            <a href="#padroes">Padrões</a>
+            <a href="#conclusao">Conclusão</a>
+        </nav>
+
+        <button class="menu-button" id="menuButton" aria-label="Abrir menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+    </div>
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main>
+
+    <section class="hero" id="inicio">
+
+        <div class="hero-background"></div>
+        <div class="hero-grid"></div>
+
+        <div class="container">
+
+            <div class="hero-content reveal">
+
+                <div class="hero-label">
+                    <span class="hero-dot"></span>
+                    Apresentação acadêmica
                 </div>
+
+                <h1>
+                    Inteligência Artificial
+                    <span class="accent">e o uso indevido</span>
+                    em atividades militares
+                </h1>
+
+                <p class="hero-subtitle">
+                    Uma análise visual de seis casos envolvendo desenvolvimento,
+                    aquisição e coleta de informações com auxílio de IA.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#relatorio" class="button button-primary">
+                        Começar apresentação
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+
+                    <a href="#casos" class="button button-secondary">
+                        Ver os seis casos
+                        <i class="fa-solid fa-images"></i>
+                    </a>
+
+                </div>
+
+                <div class="hero-stats">
+
+                    <div class="hero-stat">
+                        <strong>06</strong>
+                        <span>Casos</span>
+                    </div>
+
+                    <div class="hero-stat">
+                        <strong>04</strong>
+                        <span>Desenvolvimento</span>
+                    </div>
+
+                    <div class="hero-stat">
+                        <strong>02</strong>
+                        <span>Aquisição / informação</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         RELATÓRIO
+    ========================= -->
+
+    <section class="section section-dark" id="relatorio">
+
+        <div class="container">
+
+            <div class="section-header reveal">
+
+                <span class="eyebrow">01 / Panorama</span>
+
+                <h2>
+                    O que o relatório
+                    <span class="accent">investigou?</span>
+                </h2>
+
+                <p class="section-description">
+                    Seis casos em que um modelo de inteligência artificial
+                    foi utilizado indevidamente em atividades relacionadas
+                    ao desenvolvimento de armamentos, aquisição de equipamentos
+                    e coleta de informações.
+                </p>
+
+            </div>
+
+
+            <div class="report-layout reveal">
+
                 <div>
-                    <span class="font-bold text-lg tracking-wider bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">DEFENCE.AI</span>
-                    <span class="block text-xs text-red-400 font-mono tracking-widest uppercase">Estudo de Caso & Apresentação</span>
+                    <div class="report-number">06</div>
                 </div>
-            </div>
-            
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-300">
-                <a href="#introducao" class="hover:text-cyan-400 transition-colors">Introdução</a>
-                <a href="#aplicacoes" class="hover:text-cyan-400 transition-colors">Aplicações</a>
-                <a href="#pros-contras" class="hover:text-cyan-400 transition-colors">Prós & Contras</a>
-                <a href="#riscos" class="hover:text-red-400 transition-colors">Riscos Éticos</a>
-                <a href="#paises" class="hover:text-cyan-400 transition-colors">Cenário Global</a>
-                <a href="#polemicas" class="hover:text-red-400 transition-colors">Polêmicas & Notícias</a>
-            </nav>
 
-            <div class="flex items-center space-x-4">
-                <a href="#apresentadores" class="hidden lg:inline-flex items-center px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-xs font-mono uppercase tracking-wider text-cyan-400 border border-gray-700 transition-all">
-                    <i class="fa-solid fa-users mr-2"></i> Grupo (3)
+                <div class="report-content">
+
+                    <h3>Seis casos, diferentes atividades.</h3>
+
+                    <p>
+                        Os casos analisados envolvem atividades relacionadas
+                        à China, Rússia e Iêmen. O ponto em comum é a utilização
+                        da IA para acelerar tarefas que normalmente exigiriam
+                        conhecimento técnico, análise de informações e trabalho
+                        humano especializado.
+                    </p>
+
+                    <div class="split-stat">
+
+                        <div class="stat-box">
+                            <strong>04</strong>
+                            <span>Casos relacionados ao desenvolvimento de armamentos</span>
+                        </div>
+
+                        <div class="stat-box">
+                            <strong>02</strong>
+                            <span>Casos relacionados à aquisição e inteligência</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         COMO A IA APARECE
+    ========================= -->
+
+    <section class="section section-soft">
+
+        <div class="container">
+
+            <div class="section-header center reveal">
+
+                <span class="eyebrow">02 / O papel da IA</span>
+
+                <h2>
+                    Velocidade.
+                    <span class="accent">Escala.</span>
+                    Análise.
+                </h2>
+
+                <p class="section-description">
+                    Nos casos estudados, a IA aparece em diferentes etapas
+                    do trabalho humano.
+                </p>
+
+            </div>
+
+
+            <div class="intro-grid">
+
+                <div class="visual intro-main reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1400&q=85"
+                        alt="Representação visual de inteligência artificial">
+
+                    <div class="visual-overlay"></div>
+
+                    <div class="visual-caption">
+                        <span>Inteligência artificial</span>
+                        <h3>Grandes volumes de informação</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="intro-side">
+
+                    <div class="info-card reveal">
+
+                        <div class="icon">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+
+                        <h3>Documentos técnicos</h3>
+
+                        <p>
+                            Produção, revisão e organização de materiais
+                            técnicos.
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-card reveal">
+
+                        <div class="icon">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+
+                        <h3>Análise de informações</h3>
+
+                        <p>
+                            Processamento de grandes quantidades de dados
+                            e informações disponíveis.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CASOS 1 E 2
+    ========================= -->
+
+    <section class="section section-dark" id="casos">
+
+        <div class="container">
+
+            <div class="section-header reveal">
+
+                <span class="eyebrow">03 / Casos analisados</span>
+
+                <h2>
+                    Os primeiros
+                    <span class="accent">quatro casos.</span>
+                </h2>
+
+                <p class="section-description">
+                    Desenvolvimento de sistemas e processos técnicos
+                    com auxílio de inteligência artificial.
+                </p>
+
+            </div>
+
+
+            <div class="cases">
+
+                <!-- CASO 1 -->
+
+                <article class="case-card reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=1400&q=85"
+                        alt="Tecnologia aeroespacial e sistemas de engenharia">
+
+                    <div class="case-content">
+
+                        <span class="case-number">CASO 01</span>
+
+                        <h3>Desenvolvimento de armamento guiado</h3>
+
+                        <p>
+                            IA utilizada ao longo de diferentes etapas
+                            de um processo de desenvolvimento.
+                        </p>
+
+                        <div class="case-tags">
+                            <span class="case-tag">Conceito</span>
+                            <span class="case-tag">Arquitetura</span>
+                            <span class="case-tag">Implementação</span>
+                            <span class="case-tag">Testes</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CASO 2 -->
+
+                <article class="case-card reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=85"
+                        alt="Computação e análise de sistemas">
+
+                    <div class="case-content">
+
+                        <span class="case-number">CASO 02</span>
+
+                        <h3>Desenvolvimento e aquisição</h3>
+
+                        <p>
+                            Três linhas de trabalho aparecem simultaneamente:
+                            engenharia, aquisição e inteligência.
+                        </p>
+
+                        <div class="case-tags">
+                            <span class="case-tag">Engenharia</span>
+                            <span class="case-tag">Aquisição</span>
+                            <span class="case-tag">Inteligência</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CASO 3
+    ========================= -->
+
+    <section class="section section-soft">
+
+        <div class="container">
+
+            <div class="detail-layout">
+
+                <div class="visual detail-image reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=1400&q=85"
+                        alt="Drone em voo">
+
+                    <div class="visual-overlay"></div>
+
+                    <div class="visual-caption">
+                        <span>Caso 03</span>
+                        <h3>Sistemas autônomos</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="detail-content reveal">
+
+                    <span class="eyebrow">Caso 03</span>
+
+                    <h3>
+                        Enxame de
+                        <span class="accent">drones</span>
+                    </h3>
+
+                    <p>
+                        O caso envolveu uma tentativa de desenvolver
+                        sistemas de drones autônomos e software relacionado
+                        ao funcionamento de um enxame.
+                    </p>
+
+                    <div class="big-data">
+
+                        <strong>TRL 3–4</strong>
+
+                        <span>
+                            Demonstração de conceito e validação
+                            em ambiente de laboratório.
+                        </span>
+
+                    </div>
+
+                    <div class="process">
+
+                        <span class="process-step">Conceito</span>
+                        <span class="process-step">Arquitetura</span>
+                        <span class="process-step">Projeto</span>
+                        <span class="process-step">Implementação</span>
+                        <span class="process-step">Testes</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CASO 4
+    ========================= -->
+
+    <section class="section section-dark">
+
+        <div class="container">
+
+            <div class="detail-layout">
+
+                <div class="detail-content reveal">
+
+                    <span class="eyebrow">Caso 04</span>
+
+                    <h3>
+                        Guerra
+                        <span class="accent">eletrônica</span>
+                    </h3>
+
+                    <p>
+                        Desenvolvimento de software relacionado à guerra
+                        eletrônica e à supressão de defesas aéreas.
+                    </p>
+
+                    <div class="big-data">
+
+                        <strong>≈ 16</strong>
+
+                        <span>
+                            módulos em língua chinesa relacionados
+                            ao trabalho descrito no relatório.
+                        </span>
+
+                    </div>
+
+                    <div class="process">
+
+                        <span class="process-step">Objetivos</span>
+                        <span class="process-step">Alvos</span>
+                        <span class="process-step">Capacidades</span>
+                        <span class="process-step">Forças</span>
+                        <span class="process-step">Planejamento</span>
+                        <span class="process-step">Avaliação</span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="visual detail-image reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1400&q=85"
+                        alt="Tecnologia eletrônica e processamento">
+
+                    <div class="visual-overlay"></div>
+
+                    <div class="visual-caption">
+                        <span>Caso 04</span>
+                        <h3>Software e guerra eletrônica</h3>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CASO 5
+    ========================= -->
+
+    <section class="section section-soft">
+
+        <div class="container">
+
+            <div class="section-header center reveal">
+
+                <span class="eyebrow">Caso 05 / Aquisição</span>
+
+                <h2>
+                    Produtos de
+                    <span class="accent">uso duplo.</span>
+                </h2>
+
+                <p class="section-description">
+                    O quinto caso não se concentra diretamente na construção
+                    de uma arma, mas na aquisição de produtos e tecnologias
+                    que podem possuir aplicações civis e militares.
+                </p>
+
+            </div>
+
+
+            <div class="visual reveal" style="height:420px;">
+
+                <img
+                    src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=1800&q=85"
+                    alt="Logística e cadeia de fornecimento">
+
+                <div class="visual-overlay"></div>
+
+                <div class="visual-caption">
+
+                    <span>Caso 05</span>
+
+                    <h3>
+                        5 fluxos de aquisição simultâneos
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="chain reveal">
+
+                <div class="chain-item">
+                    <i class="fa-solid fa-industry"></i>
+                    <span>Fornecedor</span>
+                </div>
+
+                <div class="chain-item">
+                    <i class="fa-solid fa-route"></i>
+                    <span>Intermediário</span>
+                </div>
+
+                <div class="chain-item">
+                    <i class="fa-solid fa-box"></i>
+                    <span>Consignatário</span>
+                </div>
+
+                <div class="chain-item">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Usuário final</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CASO 6
+    ========================= -->
+
+    <section class="section section-dark">
+
+        <div class="container">
+
+            <div class="detail-layout">
+
+                <div class="visual detail-image reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=85"
+                        alt="Rede global de informações">
+
+                    <div class="visual-overlay"></div>
+
+                    <div class="visual-caption">
+                        <span>Caso 06</span>
+                        <h3>Inteligência de fontes abertas</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="detail-content reveal">
+
+                    <span class="eyebrow">Caso 06 / Inteligência</span>
+
+                    <h3>
+                        OSINT e coleta de
+                        <span class="accent">informações</span>
+                    </h3>
+
+                    <p>
+                        O sexto caso envolveu uma campanha de OSINT
+                        relacionada à coleta de informações sobre
+                        uma tecnologia de energia dirigida.
+                    </p>
+
+                    <div class="big-data">
+
+                        <strong>26</strong>
+
+                        <span>
+                            dias de campanha de coleta e análise
+                            de informações.
+                        </span>
+
+                    </div>
+
+                    <div class="process">
+
+                        <span class="process-step">Planejamento</span>
+                        <span class="process-step">Coleta</span>
+                        <span class="process-step">Processamento</span>
+                        <span class="process-step">Análise</span>
+                        <span class="process-step">Disseminação</span>
+                        <span class="process-step">Avaliação</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         OS 6 CASOS JUNTOS
+    ========================= -->
+
+    <section class="section section-soft">
+
+        <div class="container">
+
+            <div class="section-header center reveal">
+
+                <span class="eyebrow">07 / Visão geral</span>
+
+                <h2>
+                    Os seis casos
+                    <span class="accent">em uma visão.</span>
+                </h2>
+
+                <p class="section-description">
+                    Diferentes atividades, mas um elemento em comum:
+                    a utilização de IA para acelerar processos.
+                </p>
+
+            </div>
+
+
+            <div class="six-cases">
+
+                <a href="#casos" class="mini-case reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=900&q=80"
+                        alt="Caso 1">
+
+                    <div class="mini-case-content">
+                        <span>CASO 01</span>
+                        <h3>Armamento guiado</h3>
+                    </div>
+
                 </a>
-                <button id="mobile-menu-btn" class="md:hidden text-gray-400 hover:text-white focus:outline-none p-2">
-                    <i class="fa-solid fa-bars text-2xl"></i>
-                </button>
+
+
+                <a href="#casos" class="mini-case reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+                        alt="Caso 2">
+
+                    <div class="mini-case-content">
+                        <span>CASO 02</span>
+                        <h3>Desenvolvimento e aquisição</h3>
+                    </div>
+
+                </a>
+
+
+                <a href="#casos" class="mini-case reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?auto=format&fit=crop&w=900&q=80"
+                        alt="Caso 3">
+
+                    <div class="mini-case-content">
+                        <span>CASO 03</span>
+                        <h3>Enxame de drones</h3>
+                    </div>
+
+                </a>
+
+
+                <a href="#casos" class="mini-case reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80"
+                        alt="Caso 4">
+
+                    <div class="mini-case-content">
+                        <span>CASO 04</span>
+                        <h3>Guerra eletrônica</h3>
+                    </div>
+
+                </a>
+
+
+                <a href="#caso5" class="mini-case reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=900&q=80"
+                        alt="Caso 5">
+
+                    <div class="mini-case-content">
+                        <span>CASO 05</span>
+                        <h3>Aquisição</h3>
+                    </div>
+
+                </a>
+
+
+                <a href="#caso6" class="mini-case reveal">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80"
+                        alt="Caso 6">
+
+                    <div class="mini-case-content">
+                        <span>CASO 06</span>
+                        <h3>OSINT</h3>
+                    </div>
+
+                </a>
+
             </div>
+
         </div>
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-dark-800 border-b border-gray-700 px-4 pt-4 pb-6 space-y-3">
-            <a href="#introducao" class="block text-gray-300 hover:text-cyan-400 py-2 mobile-link">Introdução</a>
-            <a href="#aplicacoes" class="block text-gray-300 hover:text-cyan-400 py-2 mobile-link">Aplicações</a>
-            <a href="#pros-contras" class="block text-gray-300 hover:text-cyan-400 py-2 mobile-link">Prós & Contras</a>
-            <a href="#riscos" class="block text-gray-300 hover:text-red-400 py-2 mobile-link">Riscos Éticos</a>
-            <a href="#paises" class="block text-gray-300 hover:text-cyan-400 py-2 mobile-link">Cenário Global</a>
-            <a href="#polemicas" class="block text-gray-300 hover:text-red-400 py-2 mobile-link">Polêmicas & Notícias</a>
-        </div>
-    </header>
-
-    <section class="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden border-b border-gray-800 bg-gradient-to-b from-dark-900 via-dark-800 to-dark-900">
-        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute bottom-10 right-10 w-80 h-80 bg-red-600/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-mono uppercase tracking-wider">
-                        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-                        <span>Tema de Apresentação Acadêmica / Profissional</span>
-                    </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-                        Inteligência Artificial e o <span class="bg-gradient-to-r from-red-500 via-orange-500 to-blue-500 bg-clip-text text-transparent">Desenvolvimento de Armas</span>
-                    </h1>
-                    <p class="text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0">
-                        Como a evolução dos algoritmos, redes neurais e sistemas autônomos está redefinindo os campos de batalha modernos, os dilemas éticos globais e a segurança internacional.
-                    </p>
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
-                        <a href="#introducao" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold shadow-lg shadow-blue-600/30 transition-all flex items-center justify-center space-x-2">
-                            <span>Iniciar Apresentação</span>
-                            <i class="fa-solid fa-arrow-right text-sm"></i>
-                        </a>
-                        <a href="#apresentadores" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-dark-800 hover:bg-dark-700 text-gray-300 font-semibold border border-gray-700 transition-all flex items-center justify-center space-x-2">
-                            <i class="fa-solid fa-user-group text-cyan-400"></i>
-                            <span>Equipe (3 Integrantes)</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="lg:col-span-5">
-                    <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-red-600 to-blue-600 rounded-2xl blur-lg opacity-30"></div>
-                        <div class="relative bg-dark-800 border border-gray-700 rounded-2xl p-6 shadow-2xl">
-                            <div class="flex items-center justify-between mb-4 pb-4 border-b border-gray-700">
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                                </div>
-                                <span class="text-xs font-mono text-gray-400">STATUS: DEFENSE_AI_V2.6</span>
-                            </div>
-                            <div class="space-y-4 font-mono text-xs text-gray-300">
-                                <div class="p-3 bg-dark-900 rounded border border-gray-800 flex items-center justify-between">
-                                    <span>Sistemas Autônomos (LAWS)</span>
-                                    <span class="text-red-400 font-bold">CRÍTICO</span>
-                                </div>
-                                <div class="p-3 bg-dark-900 rounded border border-gray-800 flex items-center justify-between">
-                                    <span>Processamento de Alvos por Visão</span>
-                                    <span class="text-cyan-400 font-bold">ATIVO</span>
-                                </div>
-                                <div class="p-3 bg-dark-900 rounded border border-gray-800 flex items-center justify-between">
-                                    <span>Tratados Internacionais de Regulação</span>
-                                    <span class="text-yellow-400 font-bold">EM DISCUSSÃO</span>
-                                </div>
-                            </div>
-                            <div class="mt-6 pt-4 border-t border-gray-700 text-center">
-                                <span class="text-xs text-gray-400 italic">"A tecnologia militar mais disruptiva desde a pólvora e a fissão nuclear."</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
-    <section id="introducao" class="py-24 bg-dark-900 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest bg-cyan-950/50 px-3 py-1 rounded-full border border-cyan-800/50">Módulo 01</span>
-                <h2 class="text-3xl sm:text-4xl font-bold mt-3 mb-4">Introdução ao Tema</h2>
-                <p class="text-gray-400 text-base sm:text-lg">Entenda o contexto atual onde a inteligência artificial deixa de ser ferramenta civil e passa a moldar o futuro dos conflitos geopolíticos.</p>
+
+    <!-- =========================
+         PADRÕES
+    ========================= -->
+
+    <section class="section section-dark" id="padroes">
+
+        <div class="container">
+
+            <div class="section-header reveal">
+
+                <span class="eyebrow">08 / Padrões identificados</span>
+
+                <h2>
+                    O que os casos
+                    <span class="accent">têm em comum?</span>
+                </h2>
+
+                <p class="section-description">
+                    Apesar das diferenças, cinco padrões aparecem
+                    no conjunto analisado.
+                </p>
+
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-dark-800 border border-gray-700 rounded-2xl p-6 card-hover flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-6 text-xl">
-                            <i class="fa-solid fa-brain"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3 text-white">A Convergência Tecnológica</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            A fusão entre big data, poder de processamento em nuvem e algoritmos de aprendizado profundo (Machine Learning) permitiu que máquinas tomem decisões táticas em frações de segundo.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-gray-700/60 flex items-center justify-between text-xs font-mono text-gray-400">
-                        <span>Foco: Autonomia</span>
-                        <i class="fa-solid fa-arrow-trend-up text-blue-400"></i>
-                    </div>
+
+            <div class="pattern-grid">
+
+                <div class="pattern reveal">
+                    <span class="pattern-number">01</span>
+                    <h3>Automação</h3>
+                    <p>
+                        A IA pode realizar ou acelerar tarefas
+                        anteriormente feitas por pessoas.
+                    </p>
                 </div>
 
-                <div class="bg-dark-800 border border-gray-700 rounded-2xl p-6 card-hover flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 mb-6 text-xl">
-                            <i class="fa-solid fa-crosshairs"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3 text-white">Sistemas Letais Autônomos (LAWS)</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Conhecidas popularmente como "robôs assassinos", são armas capazes de selecionar e engajar alvos humanos ou materiais sem intervenção ou confirmação direta humana.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-gray-700/60 flex items-center justify-between text-xs font-mono text-gray-400">
-                        <span>Foco: Decisão de Fogo</span>
-                        <i class="fa-solid fa-triangle-exclamation text-red-400"></i>
-                    </div>
+                <div class="pattern reveal">
+                    <span class="pattern-number">02</span>
+                    <h3>Escala</h3>
+                    <p>
+                        Grandes quantidades de informações podem
+                        ser processadas por grupos menores.
+                    </p>
                 </div>
 
-                <div class="bg-dark-800 border border-gray-700 rounded-2xl p-6 card-hover flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-6 text-xl">
-                            <i class="fa-solid fa-globe"></i>
-                        </div>
-                        <h3 class="text-xl font-semibold mb-3 text-white">A Nova Corrida Armamentista</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            Superpotências globais investem bilhões anualmente para garantir superioridade algorítmica, mudando o equilíbrio de poder militar construído no século XX.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-4 border-t border-gray-700/60 flex items-center justify-between text-xs font-mono text-gray-400">
-                        <span>Foco: Geopolítica</span>
-                        <i class="fa-solid fa-chart-line text-purple-400"></i>
-                    </div>
+                <div class="pattern reveal">
+                    <span class="pattern-number">03</span>
+                    <h3>Velocidade</h3>
+                    <p>
+                        Geração, revisão e análise podem acontecer
+                        em menos tempo.
+                    </p>
                 </div>
+
+                <div class="pattern reveal">
+                    <span class="pattern-number">04</span>
+                    <h3>Integração</h3>
+                    <p>
+                        A IA pode aparecer em várias etapas de
+                        um mesmo processo.
+                    </p>
+                </div>
+
+                <div class="pattern reveal">
+                    <span class="pattern-number">05</span>
+                    <h3>Uso indevido</h3>
+                    <p>
+                        Tecnologias de uso geral podem ser utilizadas
+                        de maneira inadequada.
+                    </p>
+                </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <section id="aplicacoes" class="py-24 bg-dark-800/50 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-blue-400 font-mono text-xs uppercase tracking-widest bg-blue-950/50 px-3 py-1 rounded-full border border-blue-800/50">Módulo 02</span>
-                <h2 class="text-3xl sm:text-4xl font-bold mt-3 mb-4">Como a IA é Aplicada no Armamento</h2>
-                <p class="text-gray-400 text-base sm:text-lg">Descubra as principais frentes onde os algoritmos substituem ou auxiliam operadores militares.</p>
-            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-dark-900 border border-gray-700 rounded-2xl p-6 card-hover">
-                    <div class="text-cyan-400 text-2xl mb-4">
-                        <i class="fa-solid fa-eye"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2 text-white">Visão Computacional & Reconhecimento</h3>
-                    <p class="text-gray-400 text-sm">
-                        Drones e mísseis usam reconhecimento facial e de padrões em tempo real para identificar alvos em meio a multidões ou camuflagens complexas.
-                    </p>
-                </div>
+    <!-- =========================
+         CONCLUSÃO
+    ========================= -->
 
-                <div class="bg-dark-900 border border-gray-700 rounded-2xl p-6 card-hover">
-                    <div class="text-blue-400 text-2xl mb-4">
-                        <i class="fa-solid fa-network-wired"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2 text-white">Enxames de Drones (Swarm Tech)</h3>
-                    <p class="text-gray-400 text-sm">
-                        Dezenas ou centenas de drones autônomos comunicam-se em tempo real para coordenar ataques em massa, superando defesas antiaéreas tradicionais.
-                    </p>
-                </div>
+    <section class="section conclusion" id="conclusao">
 
-                <div class="bg-dark-900 border border-gray-700 rounded-2xl p-6 card-hover">
-                    <div class="text-purple-400 text-2xl mb-4">
-                        <i class="fa-solid fa-chess"></i>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2 text-white">Simulação e Estratégia Preditiva</h3>
-                    <p class="text-gray-400 text-sm">
-                        IAs rodam milhões de cenários de guerra por segundo para prever o movimento inimigo, otimizar rotas de suprimento e calcular danos colaterais.
-                    </p>
-                </div>
+        <div class="conclusion-background"></div>
 
-                <div class="bg-dark-900 border border-gray-700 rounded-2xl p-6 card-hover">
-                    <div class="text-red-400 text-2xl mb-4">
+        <div class="container">
+
+            <div class="conclusion-content reveal">
+
+                <span class="eyebrow">09 / Conclusão</span>
+
+                <h2>
+                    O desafio não é apenas
+                    <span class="accent">a tecnologia.</span>
+                </h2>
+
+                <p>
+                    Os casos mostram que o principal desafio também está
+                    na forma como ferramentas de inteligência artificial
+                    podem ser utilizadas por pessoas e organizações.
+                </p>
+
+
+                <div class="learning-grid">
+
+                    <div class="learning">
                         <i class="fa-solid fa-bolt"></i>
+                        IA pode acelerar processos técnicos.
                     </div>
-                    <h3 class="text-lg font-bold mb-2 text-white">Guerra Cibernética Ofensiva</h3>
-                    <p class="text-gray-400 text-sm">
-                        Malwares inteligentes capazes de vasculhar redes rivais, identificar vulnerabilidades e atacar infraestruturas críticas sem intervenção humana.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="pros-contras" class="py-24 bg-dark-900 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-green-400 font-mono text-xs uppercase tracking-widest bg-green-950/50 px-3 py-1 rounded-full border border-green-800/50">Módulo 03</span>
-                <h2 class="text-3xl sm:text-4xl font-bold mt-3 mb-4">Prós e Contras do Uso de IA Militar</h2>
-                <p class="text-gray-400 text-base sm:text-lg">Uma análise equilibrada entre as vantagens operacionais e os perigos inerentes à tecnologia.</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Pros -->
-                <div class="bg-dark-800 border border-emerald-900/50 rounded-2xl p-8 relative overflow-hidden card-hover">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-2xl"></div>
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
-                            <i class="fa-solid fa-check text-lg"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">Vantagens (Prós)</h3>
+                    <div class="learning">
+                        <i class="fa-solid fa-database"></i>
+                        Grandes volumes de informação aumentam o potencial de uso indevido.
                     </div>
-                    <ul class="space-y-4 text-gray-300 text-sm">
-                        <li class="flex items-start space-x-3">
-                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                            <div>
-                                <strong class="text-white">Redução de Baixas Próprias:</strong> Substituição de soldados humanos em missões de alto risco por unidades robóticas e autônomas.
-                            </div>
-                        </li>
-                        <li class="flex items-start space-x-3">
-                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                            <div>
-                                <strong class="text-white">Velocidade de Reação:</strong> Capacidade de processar dados e disparar contra ameaças em milissegundos, superando a reflexão humana.
-                            </div>
-                        </li>
-                        <li class="flex items-start space-x-3">
-                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                            <div>
-                                <strong class="text-white">Menor Fadiga Emocional:</strong> Máquinas não sofrem de pânico, exaustão, estresse pós-traumático (PTSD) ou raiva no calor do combate.
-                            </div>
-                        </li>
-                        <li class="flex items-start space-x-3">
-                            <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
-                            <div>
-                                <strong class="text-white">Precisão Cirúrgica (Potencial):</strong> Algoritmos podem calcular trajetórias e minimizar danos colaterais civis quando bem calibrados.
-                            </div>
-                        </li>
-                    </ul>
-                </div>
 
-                <!-- Cons -->
-                <div class="bg-dark-800 border border-red-900/50 rounded-2xl p-8 relative overflow-hidden card-hover">
-                    <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/5 rounded-full blur-2xl"></div>
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400">
-                            <i class="fa-solid fa-xmark text-lg"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white">Desvantagens e Perigos (Contras)</h3>
+                    <div class="learning">
+                        <i class="fa-solid fa-diagram-project"></i>
+                        O risco pode aparecer em diferentes etapas.
                     </div>
-                    <ul class="space-y-4 text-gray-300 text-sm">
-                        <li class="flex items-start space-x-3">
-                            <i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i>
-                            <div>
-                                <strong class="text-white">Ausência de Empatia e Julgamento:</strong> Máquinas não possuem senso moral ou discernimento ético para avaliar a rendição ou contextos sutis.
-                            </div>
-                        </li>
-                        <li class="flex items-start space-x-3">
-                            <i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i>
-                            <div>
-                                <strong class="text-white">Falhas de Alucinação Algorítmica:</strong> Sistemas de IA podem interpretar erroneamente dados e identificar civis como alvos militares.
-                            </div>
-                        </li>
-                        <li class="flex items-start space-x-3">
-                            <i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i>
-                            <div>
-                                <strong class="text-white">Proliferação Descontrolada:</strong> Facilidade de replicação de software militar pode cair nas mãos de grupos terroristas ou estados pária.
-                            </div>
-                        </li>
-                        <li class="flex items-start space-x-3">
-                            <i class="fa-solid fa-circle-xmark text-red-400 mt-1"></i>
-                            <div>
-                                <strong class="text-white">Escalada Relâmpago (Flash Wars):</strong> Conflitos entre IAs militares podem ocorrer em velocidade sobrehumana, impedindo negociações diplomáticas.
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="riscos" class="py-24 bg-dark-800/50 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-red-400 font-mono text-xs uppercase tracking-widest bg-red-950/50 px-3 py-1 rounded-full border border-red-800/50">Módulo 04</span>
-                <h2 class="text-3xl sm:text-4xl font-bold mt-3 mb-4">Riscos e Desafios Éticos</h2>
-                <p class="text-gray-400 text-base sm:text-lg">Quais são as principais barreiras morais, jurídicas e de segurança ao delegar a morte a um algoritmo?</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-dark-900 border border-gray-700 rounded-2xl p-6 card-hover">
-                    <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-gavel"></i>
+                    <div class="learning">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Segurança precisa acompanhar a evolução dos modelos.
                     </div>
-                    <h3 class="text-lg font-bold mb-2 text-white">O Vazio de Responsabilidade</h3>
-                    <p class="text-gray-400 text-sm">
-                        Se um sistema autônomo cometer um crime de guerra ou massacre por falha de código, quem deve ser punido? O programador, o comandante militar ou o fabricante?
-                    </p>
-                </div>
 
-                <div class="bg-dark-900 border border-gray-700 rounded-2xl p-6 card-hover">
-                    <div class="w-12 h-12 rounded-xl bg-yellow-500/10 text-yellow-400 flex items-center justify-center text-xl mb-4">
-                        <i class="fa-solid fa-shield-cat"></i>
+                    <div class="learning">
+                        <i class="fa-solid fa-user-check"></i>
+                        Supervisão humana continua importante.
                     </div>
-                    <h3 class="text-lg font-bold mb-2 text-white">Vulnerabilidade a Ciberataques</h3>
-                    <p class="text-gray-400 text-sm">
-                        Armas controladas por IA podem ser hackeadas, manipuladas via "adversarial attacks" (enganar a visão da IA com pequenos adesivos) e voltadas contra seus próprios criadores.
-                    </p>
-                </div>
 
-                <div class="bg-dark-900 border border-gray-700 rounded-2xl p-6 card-hover">
-                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl mb-4">
+                    <div class="learning">
                         <i class="fa-solid fa-scale-balanced"></i>
+                        Prevenção e responsabilidade são fundamentais.
                     </div>
-                    <h3 class="text-lg font-bold mb-2 text-white">Viés e Discriminação de Dados</h3>
-                    <p class="text-gray-400 text-sm">
-                        Se treinadas com dados históricos enviesados, as IAs de reconhecimento podem identificar minorias ou populações específicas como alvos em potencial com maior frequência.
-                    </p>
+
                 </div>
+
             </div>
+
         </div>
+
     </section>
 
-    <section id="paises" class="py-24 bg-dark-900 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest bg-cyan-950/50 px-3 py-1 rounded-full border border-cyan-800/50">Módulo 05</span>
-                <h2 class="text-3xl sm:text-4xl font-bold mt-3 mb-4">Cenário Global: Quem Está Liderando?</h2>
-                <p class="text-gray-400 text-base sm:text-lg">As principais potências militares e seus avanços no desenvolvimento de armas integradas à inteligência artificial.</p>
+
+    <!-- =========================
+         FRASE FINAL
+    ========================= -->
+
+    <section class="section section-dark">
+
+        <div class="container">
+
+            <div class="section-header center reveal">
+
+                <span class="eyebrow">Mensagem final</span>
+
+                <h2>
+                    Tecnologia amplia
+                    <span class="accent">possibilidades.</span>
+                </h2>
+
+                <p class="section-description">
+                    O avanço da inteligência artificial amplia suas
+                    aplicações legítimas e também a necessidade de
+                    mecanismos eficazes para impedir seu uso indevido.
+                </p>
+
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- EUA -->
-                <div class="bg-dark-800 border border-gray-700 rounded-2xl p-6 card-hover">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold text-white">Estados Unidos</h3>
-                        <span class="px-2.5 py-1 rounded bg-blue-500/10 text-blue-400 text-xs font-mono">Pentágono</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Investimentos massivos através do projeto <em>Replicator</em> para inundar o Pacífico com milhares de drones autônomos. Foco em diretrizes éticas oficiais.
-                    </p>
-                    <div class="text-xs font-mono text-gray-400 pt-3 border-t border-gray-700">
-                        Status: <span class="text-emerald-400 font-semibold">Líder em P&D</span>
-                    </div>
-                </div>
-
-                <!-- China -->
-                <div class="bg-dark-800 border border-gray-700 rounded-2xl p-6 card-hover">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold text-white">China</h3>
-                        <span class="px-2.5 py-1 rounded bg-red-500/10 text-red-400 text-xs font-mono">PLA</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Adota a estratégia de "Fusão Militar-Civil", integrando laboratórios estatais e gigantes de tecnologia diretamente no desenvolvimento de guerra cognitiva e autônoma.
-                    </p>
-                    <div class="text-xs font-mono text-gray-400 pt-3 border-t border-gray-700">
-                        Status: <span class="text-red-400 font-semibold">Expansão Agressiva</span>
-                    </div>
-                </div>
-
-                <!-- Rússia -->
-                <div class="bg-dark-800 border border-gray-700 rounded-2xl p-6 card-hover">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold text-white">Rússia</h3>
-                        <span class="px-2.5 py-1 rounded bg-purple-500/10 text-purple-400 text-xs font-mono">Moscou</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Desenvolvimento de sistemas como o tanque autônomo <em>Marker</em> e testes frequentes de armamentos guiados por IA em teatros de operações reais.
-                    </p>
-                    <div class="text-xs font-mono text-gray-400 pt-3 border-t border-gray-700">
-                        Status: <span class="text-yellow-400 font-semibold">Em Testes de Campo</span>
-                    </div>
-                </div>
-
-                <!-- Israel -->
-                <div class="bg-dark-800 border border-gray-700 rounded-2xl p-6 card-hover">
-                    <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-xl font-bold text-white">Israel</h3>
-                        <span class="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 text-xs font-mono">IDF</span>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">
-                        Pioneira no uso de sistemas baseados em IA (como as plataformas <em>Lavender</em> e <em>Habsora</em>) para recomendação de alvos e bombardeios em conflitos urbanos.
-                    </p>
-                    <div class="text-xs font-mono text-gray-400 pt-3 border-t border-gray-700">
-                        Status: <span class="text-cyan-400 font-semibold">Uso Operacional Ativo</span>
-                    </div>
-                </div>
-            </div>
         </div>
+
     </section>
 
-    <section id="polemicas" class="py-24 bg-dark-800/50 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-yellow-400 font-mono text-xs uppercase tracking-widest bg-yellow-950/50 px-3 py-1 rounded-full border border-yellow-800/50">Módulo 06</span>
-                <h2 class="text-3xl sm:text-4xl font-bold mt-3 mb-4">Polêmicas Recentes & Notícias em Destaque</h2>
-                <p class="text-gray-400 text-base sm:text-lg">O que a mídia global e pesquisadores estão debatendo sobre o uso atual da IA em zonas de guerra.</p>
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container">
+
+        <div class="footer-content">
+
+            <div class="footer-logo">
+                <i class="fa-solid fa-microchip"></i>
+                DEFENCE.AI
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-dark-900 border border-gray-700 rounded-2xl overflow-hidden card-hover flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 bg-dark-700 relative overflow-hidden flex items-center justify-center">
-                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent opacity-80"></div>
-                            <i class="fa-solid fa-newspaper text-5xl text-gray-600"></i>
-                            <span class="absolute top-3 left-3 bg-red-500/80 text-white text-xs px-2.5 py-1 rounded font-mono">Investigação</span>
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs font-mono text-gray-400">Relatório Internacional • Oriente Médio</span>
-                            <h3 class="text-lg font-bold mt-2 mb-3 text-white">O Uso de IAs como "Fábricas de Alvos"</h3>
-                            <p class="text-gray-400 text-sm">
-                                Investigações jornalísticas revelaram o uso de sistemas de IA para gerar milhares de alvos humanos automaticamente com mínima supervisão humana em conflitos recentes.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="px-6 pb-6 pt-2">
-                        <span class="text-xs text-red-400 font-semibold flex items-center">
-                            <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Forte Debate Ético Global
-                        </span>
-                    </div>
-                </div>
+            <p>
+                Trabalho acadêmico sobre Inteligência Artificial
+                e uso indevido em atividades militares.
+            </p>
 
-                <div class="bg-dark-900 border border-gray-700 rounded-2xl overflow-hidden card-hover flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 bg-dark-700 relative overflow-hidden flex items-center justify-center">
-                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent opacity-80"></div>
-                            <i class="fa-solid fa-robot text-5xl text-gray-600"></i>
-                            <span class="absolute top-3 left-3 bg-blue-500/80 text-white text-xs px-2.5 py-1 rounded font-mono">Defesa</span>
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs font-mono text-gray-400">EUA / Pentágono</span>
-                            <h3 class="text-lg font-bold mt-2 mb-3 text-white">Iniciativa Replicator de Drones</h3>
-                            <p class="text-gray-400 text-sm">
-                                O Departamento de Defesa americano acelerou a fabricação em massa de milhares de sistemas autônomos de baixo custo para contrapor a vantagem em hardware na Ásia.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="px-6 pb-6 pt-2">
-                        <span class="text-xs text-blue-400 font-semibold flex items-center">
-                            <i class="fa-solid fa-circle-info mr-1.5"></i> Corrida Tecnológica Ativa
-                        </span>
-                    </div>
-                </div>
+            <p style="margin-top:8px;">
+                2026 • Desenvolvido para fins educacionais.
+            </p>
 
-                <div class="bg-dark-900 border border-gray-700 rounded-2xl overflow-hidden card-hover flex flex-col justify-between">
-                    <div>
-                        <div class="h-48 bg-dark-700 relative overflow-hidden flex items-center justify-center">
-                            <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent opacity-80"></div>
-                            <i class="fa-solid fa-handshake-slash text-5xl text-gray-600"></i>
-                            <span class="absolute top-3 left-3 bg-purple-500/80 text-white text-xs px-2.5 py-1 rounded font-mono">ONU / Tratados</span>
-                        </div>
-                        <div class="p-6">
-                            <span class="text-xs font-mono text-gray-400">Assembleia Geral da ONU</span>
-                            <h3 class="text-lg font-bold mt-2 mb-3 text-white">Impasse para Banir Robôs Assassinos</h3>
-                            <p class="text-gray-400 text-sm">
-                                Enquanto dezenas de países exigem um tratado internacional proibindo armas letais totalmente autônomas, potências militares bloqueiam acordos vinculantes.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="px-6 pb-6 pt-2">
-                        <span class="text-xs text-yellow-400 font-semibold flex items-center">
-                            <i class="fa-solid fa-clock mr-1.5"></i> Sem Consenso Global
-                        </span>
-                    </div>
-                </div>
-            </div>
         </div>
-    </section>
 
-    <section id="apresentadores" class="py-24 bg-dark-900 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-cyan-400 font-mono text-xs uppercase tracking-widest bg-cyan-950/50 px-3 py-1 rounded-full border border-cyan-800/50">Equipe de Trabalho</span>
-                <h2 class="text-3xl sm:text-4xl font-bold mt-3 mb-4">Integrantes do Grupo (3 Alunos)</h2>
-                <p class="text-gray-400 text-base sm:text-lg">Divisão sugerida de tópicos para a apresentação oral da pesquisa.</p>
-            </div>
+    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-dark-800 border border-gray-700 rounded-2xl p-6 text-center card-hover">
-                    <div class="w-20 h-20 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center text-3xl mx-auto mb-4">
-                        <i class="fa-solid fa-user-tie"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-1">Integrante 1</h3>
-                    <span class="text-xs font-mono text-blue-400 uppercase tracking-wider block mb-4">Introdução & Aplicações</span>
-                    <p class="text-gray-400 text-sm mb-6">
-                        Responsável por introduzir o tema, a convergência tecnológica e explicar como a visão computacional e os enxames atuam no campo de batalha.
-                    </p>
-                    <div class="bg-dark-900 py-2 px-3 rounded text-xs font-mono text-gray-300 border border-gray-800">
-                        Módulos 01 e 02
-                    </div>
-                </div>
+</footer>
 
-                <div class="bg-dark-800 border border-gray-700 rounded-2xl p-6 text-center card-hover">
-                    <div class="w-20 h-20 rounded-full bg-red-500/10 border border-red-500/30 text-red-400 flex items-center justify-center text-3xl mx-auto mb-4">
-                        <i class="fa-solid fa-user-shield"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-1">Integrante 2</h3>
-                    <span class="text-xs font-mono text-red-400 uppercase tracking-wider block mb-4">Prós, Contras & Riscos</span>
-                    <p class="text-gray-400 text-sm mb-6">
-                        Responsável por apresentar o balanço entre as vantagens militares e os profundos riscos éticos, responsabilidade jurídica e alucinações algorítmicas.
-                    </p>
-                    <div class="bg-dark-900 py-2 px-3 rounded text-xs font-mono text-gray-300 border border-gray-800">
-                        Módulos 03 e 04
-                    </div>
-                </div>
 
-                <div class="bg-dark-800 border border-gray-700 rounded-2xl p-6 text-center card-hover">
-                    <div class="w-20 h-20 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 flex items-center justify-center text-3xl mx-auto mb-4">
-                        <i class="fa-solid fa-user-gear"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-1">Integrante 3</h3>
-                    <span class="text-xs font-mono text-purple-400 uppercase tracking-wider block mb-4">Cenário Global & Polêmicas</span>
-                    <p class="text-gray-400 text-sm mb-6">
-                        Responsável por detalhar quais países lideram a corrida (EUA, China, Rússia, Israel) e trazer as polêmicas recentes e notícias da mídia internacional.
-                    </p>
-                    <div class="bg-dark-900 py-2 px-3 rounded text-xs font-mono text-gray-300 border border-gray-800">
-                        Módulos 05 e 06
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
-    <footer class="bg-dark-900 py-12 border-t border-gray-800 text-center text-sm text-gray-500">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
-            <div class="flex items-center justify-center space-x-3">
-                <div class="w-8 h-8 rounded bg-gradient-to-tr from-red-600 to-blue-600 flex items-center justify-center text-white">
-                    <i class="fa-solid fa-shield-halved text-sm"></i>
-                </div>
-                <span class="font-bold text-white tracking-wider">DEFENCE.AI</span>
-            </div>
-            <p>Trabalho acadêmico e apresentação em grupo sobre Inteligência Artificial e Desenvolvimento de Armas.</p>
-            <p class="text-xs font-mono text-gray-600">&copy; 2026 &bull; Desenvolvido para fins educacionais e de conscientização tecnológica.</p>
-        </div>
-    </footer>
+<script>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
+    document.addEventListener("DOMContentLoaded", () => {
 
-            if (mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
+        "use strict";
+
+        /* =========================
+           MENU MOBILE
+        ========================= */
+
+        const menuButton = document.getElementById("menuButton");
+        const navLinks = document.getElementById("navLinks");
+
+        if (menuButton && navLinks) {
+
+            menuButton.addEventListener("click", () => {
+
+                navLinks.classList.toggle("active");
+
+                const icon = menuButton.querySelector("i");
+
+                if (navLinks.classList.contains("active")) {
+                    icon.className = "fa-solid fa-xmark";
+                } else {
+                    icon.className = "fa-solid fa-bars";
+                }
+
+            });
+
+            navLinks.querySelectorAll("a").forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    navLinks.classList.remove("active");
+
+                    const icon = menuButton.querySelector("i");
+
+                    icon.className = "fa-solid fa-bars";
+
                 });
 
-                const mobileLinks = mobileMenu.querySelectorAll('.mobile-link');
-                for (let i = 0; i < mobileLinks.length; i++) {
-                    mobileLinks[i].addEventListener('click', function() {
-                        mobileMenu.classList.add('hidden');
-                    });
-                }
+            });
+
+        }
+
+
+        /* =========================
+           REVEAL AO ROLAR
+        ========================= */
+
+        const revealElements = document.querySelectorAll(".reveal");
+
+        const revealObserver = new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        revealObserver.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
             }
+        );
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
         });
-    </script>
+
+
+        /* =========================
+           EFEITO NAVBAR
+        ========================= */
+
+        const navbar = document.querySelector(".navbar");
+
+        window.addEventListener("scroll", () => {
+
+            if (!navbar) return;
+
+            if (window.scrollY > 30) {
+
+                navbar.style.background = "rgba(5,8,12,.95)";
+
+            } else {
+
+                navbar.style.background = "rgba(7,10,15,.82)";
+
+            }
+
+        });
+
+
+        /* =========================
+           ATALHOS DE TECLADO
+        ========================= */
+
+        document.addEventListener("keydown", event => {
+
+            if (event.key === "Escape") {
+
+                navLinks?.classList.remove("active");
+
+                const icon = menuButton?.querySelector("i");
+
+                if (icon) {
+                    icon.className = "fa-solid fa-bars";
+                }
+
+            }
+
+        });
+
+    });
+
+</script>
+```
+
 </body>
 </html>
